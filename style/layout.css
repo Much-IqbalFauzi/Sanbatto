@@ -33,12 +33,36 @@
     justify-content: space-around;
 }
 
+.space-between {
+    justify-content: space-between;
+}
+
 .column {
     flex-direction: column;
 }
 
+.img-replace {
+    width: 100%;
+    height: 250px;
+    background-color: cadetblue;
+}
+
 #logo-main {
     height: 120px;
+    width: auto;
+}
+
+#main-page{
+    height: 40px;
+    width: auto;
+}
+
+#preload-Page {
+    z-index: 1920;
+}
+
+#preload {
+    height: 200px;
     width: auto;
 }
 
