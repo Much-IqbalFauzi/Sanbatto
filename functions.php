@@ -179,8 +179,6 @@
 		return $hasil;
 	}
 
-	
-
 	function insert_user($data) {
 		global $con;
 
