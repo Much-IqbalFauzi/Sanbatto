@@ -1,17 +1,17 @@
 <?php
 	require_once "config.php";
 
-	function select_user($id=0) {
+	function select_user($email="") {
 		global $con;
 
 		$hasil = array();
 
-		if ($user != "") $sql = "SELECT * FROM tbl_user WHERE id = :id";
+		if ($email != "") $sql = "SELECT * FROM tbl_user WHERE email = :email";
 		else $sql = "SELECT * FROM tbl_user";
 
 		try {
             $stmt = $con->prepare($sql);
-            if ($user != "") $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            if ($email != "") $stmt->bindValue(':email', $email, PDO::PARAM_STR);
 
             if ($stmt->execute()) {
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -40,12 +40,36 @@
 		return $hasil;
 	}
 
+	function check_login($email="",$password=""){
+		global $con;
+		$sql = "SELECT email FROM tb_login WHERE email = :email AND password = :password";
+
+		try {
+			$stmt = $con->prepare($sql);
+			$stmt->bindValue(':email', $email, PDO::PARAM_STR);
+			$stmt->bindValue(':password', $password, PDO::PARAM_STR);
+
+			if ($stmt->execute()) {
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        		$rs = $stmt->fetchAll();
+
+        		if ($rs != null) {
+					return true;
+				}
+			}
+
+		}catch(Exceptio $e){
+			echo 'Error Password / Email';
+		}
+		
+	}
+
 	function select_post($id=0) {
 		global $con;
 
 		$hasil = array();
 
-		if ($user != "") $sql = "SELECT * FROM tb_post WHERE id = :id";
+		if ($id != 0) $sql = "SELECT * FROM tb_post WHERE id = :id";
 		else $sql = "SELECT * FROM tb_post";
 
 		try {
@@ -84,7 +108,7 @@
 
 		$hasil = array();
 
-		if ($user != "") $sql = "SELECT * FROM tb_comment WHERE id = :id";
+		if ($id != 0) $sql = "SELECT * FROM tb_comment WHERE id = :id";
 		else $sql = "SELECT * FROM tb_comment";
 
 		try {

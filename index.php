@@ -1,5 +1,22 @@
 <?php
+    require_once "functions.php";
 
+    if(isset($_SESSION['email'])){
+        header("Location: home.php");
+    }else{
+        echo "<script>console.log('Debug Objects: oooo' );</script>";
+        if(isset($_POST['login'])){
+            $email = $_POST['email'];
+            $password = $_POST['password']; 
+            if(check_login($email,$password)){
+                $_SESSION['user'] = $email;
+                $_SESSION['data'] = select_user($email);
+                header("Refresh:2; url=home.php");
+            }else{
+                echo "password salah";
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -25,11 +42,11 @@
         </div>
         <div class="w-50 h-75 flex-center p-3 column">
             <h3 class="mb-4">Sign In</h3>
-            <form action="" class="w-50">
+            <form method="post" class="w-50">
                 <div class="column flex-center w-100">
-                    <input type="text" placeholder="Email" class="round-5 light bg-dark-blue my-2 py-2 px-3 w-100">
-                    <input type="password" placeholder="Password" class="round-5 light bg-dark-blue my-2 py-2 px-3 w-100">
-                    <button class="round-5 mt-4 mb-2 p-2 w-50 bg-light-blue">Masuk</button>
+                    <input type="text" placeholder="Email" class="round-5 light bg-dark-blue my-2 py-2 px-3 w-100" name="email">
+                    <input type="password" placeholder="Password" class="round-5 light bg-dark-blue my-2 py-2 px-3 w-100" name="password">
+                    <input type="submit" name="login" class="round-5 mt-4 mb-2 p-2 w-50 bg-light-blue" value="MASUK">
                 </div>
             </form>
             <div>

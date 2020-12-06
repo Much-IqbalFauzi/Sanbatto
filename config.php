@@ -5,7 +5,7 @@
 	ini_set('display_errors', 1);
 
 	$configdb = array();
-	$configdb['db'] = "db_sanbatto";
+	$configdb['db'] = "tas_pbp";
 	$configdb['host'] = "localhost";
 	$configdb['user'] = "root";
 	$configdb['pass'] = "";
