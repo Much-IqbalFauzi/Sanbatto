@@ -19,7 +19,7 @@
     <div class="bg-dark-blue w-100 sticky-top py-3 px-5" id="nav">
         <div class="w-100 mx-auto flex align-center space-between">
             <img src="./assets/light.png" alt="" id="main-page" class="ml-">
-            <div class="light flex align-center space-between" style="font-size: 30px; width: 200px;">
+            <div class="light flex align-center space-between" style="font-size: 25px; width: 200px;">
                 <i class="fa cursor-point">&#xf015;</i>
                 <i class="fa cursor-point">&#xf007;</i>
                 <i class="fa cursor-point">&#xf129;</i>
@@ -31,9 +31,16 @@
     <!-- main -->
     <div class="px-5 py-3 mt-2">
         <div class="side-left" style="width: 200px">
-            <div class="img-replace flex-center">img replace</div>
+            <div class="img-replace flex-center round-5">img replace</div>
             <div class="w-100 p-2 mt-2">
-                <h5>Alisa Ilinichina Amiela</h5>
+                <h5>Alisa Illinichina Amiela</h5>
+                <span>21 tahun / Perempuan</span>
+                <div class="flex column w-100">
+                    <span>+81-082-335-8765</span>
+                    <span>amiela@alisa.com</span>
+                    <span><img src="./assets/touch-dark.png" alt="" style="height: 20px; width: 20px;"> 200 Touches</span>
+                </div>
+
 
             </div>
         </div>
