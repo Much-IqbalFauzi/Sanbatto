@@ -40,6 +40,45 @@
 		return $hasil;
 	}
 
+	function select_user_name($name="") {
+		global $con;
+
+		$hasil = array();
+
+		if ($name != "") $sql = "SELECT * FROM tbl_user WHERE name = :name";
+		else $sql = "SELECT * FROM tbl_user";
+
+		try {
+            $stmt = $con->prepare($sql);
+            if ($name != "") $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+
+            if ($stmt->execute()) {
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        		$rs = $stmt->fetchAll();
+        		
+        		if ($rs != null) {
+        			$i = 0;
+        			foreach ($rs as $val) {
+        				$hasil[$i]['id'] = $val['id'];
+        				$hasil[$i]['name'] = $val['name'];
+						$hasil[$i]['email'] = $val['email'];
+						$hasil[$i]['birth_date'] = $val['birth_date'];
+						$hasil[$i]['gender'] = $val['gender'];
+						$hasil[$i]['phone'] = $val['phone'];
+						$hasil[$i]['status'] = $val['status'];
+						$hasil[$i]['touch'] = $val['touch'];
+						$hasil[$i]['join_date'] = $val['join_date'];
+						$i++;
+        			}
+        		}
+        	}
+        } catch(Exception $e) {
+			echo 'Error select_data : '.$e->getMessage();
+		}
+
+		return $hasil;
+	}
+
 	function check_login($email="",$password=""){
 		global $con;
 		$sql = "SELECT email FROM tb_login WHERE email = :email AND password = :password";
