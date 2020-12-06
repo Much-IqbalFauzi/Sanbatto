@@ -115,7 +115,7 @@
 
 		try {
             $stmt = $con->prepare($sql);
-            if ($user != "") $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            if ($id != "") $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
             if ($stmt->execute()) {
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -332,13 +332,13 @@
 				$sql = "DELETE FROM tb_comment WHERE id_post = :id";
 				$stmt = $con->prepare($sql);
 				$stmt->bindValue(':id', $id, PDO::PARAM_INT);
-				if ($stmt->execute()) return true;
+				if ($stmt->execute()) $oke=true;
 				else return false;
 
 				$sql = "DELETE FROM tb_post WHERE id = :id";
 				$stmt = $con->prepare($sql);
 				$stmt->bindValue(':id', $id, PDO::PARAM_INT);
-				if ($stmt->execute()) return true;
+				if ($stmt->execute()) return false;
 				else return false;
 
 			} catch(Exception $e) {
