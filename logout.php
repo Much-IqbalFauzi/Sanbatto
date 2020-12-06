@@ -15,5 +15,5 @@ echo '
 <div class="spinner-grow text-light"></div>
         <h1>Loging out...</h1>
         </div>';
-header("Refresh: 2; url=login.php");
+header("Refresh: 2; url=index.php");
 ?>

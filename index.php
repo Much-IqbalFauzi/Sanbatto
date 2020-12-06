@@ -2,16 +2,16 @@
     require_once "functions.php";
 
     if(isset($_SESSION['email'])){
-        header("Location: home.php");
+        header("Location: welcome.php");
     }else{
         echo "<script>console.log('Debug Objects: oooo' );</script>";
         if(isset($_POST['login'])){
             $email = $_POST['email'];
             $password = $_POST['password']; 
             if(check_login($email,$password)){
-                $_SESSION['user'] = $email;
-                $_SESSION['data'] = select_user($email);
-                header("Refresh:2; url=home.php");
+                $_SESSION['email'] = $email;
+                $_SESSION['user'] = select_user($email);
+                header("Refresh:1; url=profile.php");
             }else{
                 echo "password salah";
             }
@@ -50,7 +50,7 @@
                 </div>
             </form>
             <div>
-                <p>Belum punya akun? <a class="cursor-point light-green"><u>daftar disini</u></a></p>
+                <p>Belum punya akun? <a class="cursor-point light-green" href="register.php"><u>daftar disini</u></a></p>
             </div>
             
         </div>

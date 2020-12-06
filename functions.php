@@ -29,6 +29,7 @@
 						$hasil[$i]['status'] = $val['status'];
 						$hasil[$i]['touch'] = $val['touch'];
 						$hasil[$i]['join_date'] = $val['join_date'];
+						$hasil[$i]['life_motto'] = $val['life_motto'];
 						$i++;
         			}
         		}
@@ -68,6 +69,7 @@
 						$hasil[$i]['status'] = $val['status'];
 						$hasil[$i]['touch'] = $val['touch'];
 						$hasil[$i]['join_date'] = $val['join_date'];
+						$hasil[$i]['life_motto'] = $val['life_motto'];
 						$i++;
         			}
         		}
@@ -184,21 +186,23 @@
 
 		if ($data != null) {
 			try {
-				$sql = "INSERT INTO tbl_user VALUES (:name, :email, :birth_date, :gender, :phone, :status, :touch, :join_date)";
+				$sql = "INSERT INTO tbl_user VALUES (:id ,:name, :email, :birth_date, :gender, :phone, :status, :touch, :join_date,:life_motto)";
 				$stmt = $con->prepare($sql);
+				$stmt->bindValue(':id', 0, PDO::PARAM_INT);
 				$stmt->bindValue(':name', $data['name'], PDO::PARAM_STR);
 				$stmt->bindValue(':email', $data['email'], PDO::PARAM_STR);
-				$stmt->bindValue(':birth_date', $data['birth_date'], PDO::PARAM_STR);
+				$stmt->bindValue(':birth_date', "", PDO::PARAM_STR);
 				$stmt->bindValue(':gender', $data['gender'], PDO::PARAM_STR);
 				$stmt->bindValue(':phone', $data['phone'], PDO::PARAM_STR);
-				$stmt->bindValue(':status', $data['status'], PDO::PARAM_INT);
-				$stmt->bindValue(':touch', $data['touch'], PDO::PARAM_INT);
-				$stmt->bindValue(':join_date', $data['join_date'], PDO::PARAM_STR);
+				$stmt->bindValue(':status', 1, PDO::PARAM_INT);
+				$stmt->bindValue(':touch', 0, PDO::PARAM_INT);
+				$stmt->bindValue(':join_date', date("Y/m/d"), PDO::PARAM_STR);
+				$stmt->bindValue(':life_motto', "", PDO::PARAM_STR);
 
 				if ($stmt->execute()) $ok = true;
 				else return false;
 
-				$sql = "INSERT INTO tbl_login VALUES (:email, :password)";
+				$sql = "INSERT INTO tb_login VALUES (:email, :password)";
 				$stmt = $con->prepare($sql);
 				$stmt->bindValue(':email', $data['email'], PDO::PARAM_STR);
 				$stmt->bindValue(':password', $data['password'], PDO::PARAM_STR);
@@ -264,23 +268,20 @@
 	}
 
 
-	function update_user($id="",$data) {
+	function update_user($email="",$data) {
 		global $con;
 
 		if ($data != null) {
 			try {
-				$sql = "UPDATE tbl_data SET name = :name, email = :email, birth_date = :birth_date, gender = :gender, phone = :phone, status = :status,  touch = :touch,  join_date = :join_date  WHERE id = :id";
+				$sql = "UPDATE tbl_user SET name = :name, birth_date = :birth_date, gender = :gender, phone = :phone, status = :status, life_motto = :life_motto  WHERE email = :email";
 				$stmt = $con->prepare($sql);
-				$stmt->bindValue(':id', $id, PDO::PARAM_INT);
-				$stmt->bindValue(':name', $data['nama'], PDO::PARAM_STR);
-				$stmt->bindValue(':email', $data['email'], PDO::PARAM_STR);
+				$stmt->bindValue(':name', $data['name'], PDO::PARAM_STR);
+				$stmt->bindValue(':email', $email, PDO::PARAM_STR);
 				$stmt->bindValue(':birth_date', $data['birth_date'], PDO::PARAM_STR);
 				$stmt->bindValue(':gender', $data['gender'], PDO::PARAM_STR);
 				$stmt->bindValue(':phone', $data['phone'], PDO::PARAM_STR);
 				$stmt->bindValue(':status', $data['status'], PDO::PARAM_INT);
-				$stmt->bindValue(':touch', $data['touch'], PDO::PARAM_INT);
-				$stmt->bindValue(':join_date', $data['join_date'], PDO::PARAM_STR);
-
+				$stmt->bindValue(':life_motto', $data['life_motto'], PDO::PARAM_STR);
 				if ($stmt->execute()) return true;
 				else return false;
 			} catch(Exception $e) {
