@@ -29,8 +29,8 @@
     </div>
 
     <!-- main -->
-    <div class="px-5 py-3 mt-2">
-        <div class="side-left" style="width: 200px">
+    <div class="py-3 mt-2">
+        <div class="position-fixed ml-5" style="width: 200px">
             <div class="img-replace flex-center round-5">img replace</div>
             <div class="w-100 p-2 mt-2">
                 <h5>Alisa Illinichina Amiela</h5>
@@ -40,14 +40,55 @@
                     <span>amiela@alisa.com</span>
                     <span><img src="./assets/touch-dark.png" alt="" style="height: 20px; width: 20px;"> 200 Touches</span>
                 </div>
-
-
             </div>
         </div>
+        <div class=" position-fixed mr-5" style="width: 200px; right: 0;">
+            <div >
+                <input type="text" placeholder="cari user online" name="" id="" class="w-100 pl-4 p-2 round-5">
+                <i class="fa" id="search-user-online">&#xf002;</i>
+            </div>
+            
+            <!-- underline -->
+            <div class="w-75"></div>
+
+            <div class="p-1">
+                <ul>
+                    <li class="flex align-center p-2">
+                        <div class="user-pict rounded-circle"></div>
+                        <span class="mx-2">Daisuke</span>
+                        <div class="circle-online bg-light-blue round-5"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="input-post mx-auto">
+            <div contentEditable="true" class="round-5 p-2 px-3 w-100 bg-white input-sambat">
+                Sambat Yok ...
+                <img src="" alt="" id="img-preview__img">
+                <video src="" id="video-preview" controls></video>
+            </div>
+            <div class="w-100 mt-2 clearfix">
+                <span id="url-file"></span>
+                <div class="float-right flex align-center">
+                    <label>
+                        <i class="fa cursor-point" style="font-size: 25px;">&#xf0c6;</i>
+                        <input type="file" id="inputFile" style="display: none" />
+                    </label>
+                    <button class="btn btn-danger light ml-4">Lepaskan</button>
+                </div>
+            </div>
+        </div>
+
+        <ul>
+            <li class="input-post">
+                
+            </li>
+        </ul>
     </div>
 
     
-
+    <script src="./script/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>

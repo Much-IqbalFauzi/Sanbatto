@@ -47,6 +47,36 @@
     background-color: cadetblue;
 }
 
+.circle-online {
+    width: 10px;
+    height: 10px;
+}
+
+.input-post {
+    width: 600px;
+}
+
+.input-sambat {
+    max-height: 150px;
+    min-height: 150px;
+    overflow-y: auto;
+}
+
+.user-pict {
+    width: 30px;
+    height: 30px;
+
+
+    background-color: blueviolet;
+}
+
+#search-user-online {
+    position: absolute;
+    left: 5px;
+    top: 12px;
+    color: darkgray;
+}
+
 #logo-main {
     height: 120px;
     width: auto;
@@ -66,3 +96,14 @@
     width: auto;
 }
 
+#img-preview__img {
+    display: none;
+    max-width: 550px;
+    height: auto;
+}
+
+#video-preview {
+    display: none;
+    max-width: 550px;
+    height: auto;
+}

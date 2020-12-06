@@ -10,6 +10,14 @@ button {
     border: none;
 }
 
+ul{
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
 .light-blue {
     color: #23baea;
 }
@@ -34,6 +42,10 @@ button {
     background-color: #23baea;
 }
 
+.bg-light-green {
+    background-color: #10c04d;
+}
+
 .bg-dark-blue {
     background-color: #1d1d25;
 }
@@ -47,7 +59,7 @@ button {
 }
 
 .side {
-    border: 1px solid;
+    border-left: 1px solid #1d1d25;
 }
 
 .box::before {
