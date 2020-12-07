@@ -15,7 +15,8 @@ if (!isset($_SESSION['email'])) {
         if ($sambatan['content'] == "" || $sambatan['id_user']== "") {
             echo '<div class="alert alert-danger">Pastikan semua kolom sudah diisi!'.$sambatan['content'].' '.$sambatan['id_user'].'</div>';
         } else {
-                if (insert_post($sambatan)) echo '<div class="alert alert-success">Sukses tambah data user!</div>';
+                if (insert_post($sambatan)) {echo '<div class="alert alert-success">Sukses tambah post!</div>';
+                header("Refresh:1; url=welcome.php?email=$email");}
                 else echo '<div class="alert alert-danger">Gagal tambah data user!</div>';
         }
     }
@@ -92,8 +93,8 @@ if (!isset($_SESSION['email'])) {
         </div>
         <form method="post">
         <div class="input-post mx-auto">
-            <div contentEditable="true" class="round-5 p-2 px-3 w-100 bg-white input-sambat">
-                <input type="text" value="Sambat Yok ..." name="content">
+            <div contentEditable="true">
+                <input  class="round-5 p-2 px-3 w-100 bg-white input-sambat" type="text" value="Sambat Yok ..." name="content">
                 <img src="" alt="" id="img-preview__img">
                 <video src="" id="video-preview" controls></video>
             </div>
@@ -111,7 +112,21 @@ if (!isset($_SESSION['email'])) {
         </form>
         <ul>
             <li class="input-post">
-                
+                <table class="table" style="margin:auto">
+                <?php 
+                $data_table = '';
+                $data = select_post();
+                foreach ($data as $key => $val) {
+                    $data_table .= '
+                        <tr>
+                            <td>'.$val['content'].'</td>
+                            <td>'.$val['post_date'].'</td>
+                        </tr>
+                    ';
+                }
+                //echo '<div class="container" style="margin:40vh">'.$data_table.'</div>';
+                ?>
+                </table>
             </li>
         </ul>
     </div>

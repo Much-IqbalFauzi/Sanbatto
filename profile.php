@@ -56,6 +56,7 @@
      if (sizeof($data) > 0) {
          echo '
          <div class="container">
+         <div class="img-replace flex-center round-5" style="width:25%; margin:auto">img replace</div>
              <form method="post" action="profile.php?email='.$data[0]['email'].'">
                  <table class="table table-bordered table-hover">
                       <tr>
