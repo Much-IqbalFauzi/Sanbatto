@@ -30,6 +30,7 @@
 						$hasil[$i]['touch'] = $val['touch'];
 						$hasil[$i]['join_date'] = $val['join_date'];
 						$hasil[$i]['life_motto'] = $val['life_motto'];
+						$hasil[$i]['verified'] = $val['verified'];
 						$i++;
         			}
         		}
@@ -70,6 +71,7 @@
 						$hasil[$i]['touch'] = $val['touch'];
 						$hasil[$i]['join_date'] = $val['join_date'];
 						$hasil[$i]['life_motto'] = $val['life_motto'];
+						$hasil[$i]['verified'] = $val['verified'];
 						$i++;
         			}
         		}
@@ -184,7 +186,7 @@
 
 		if ($data != null) {
 			try {
-				$sql = "INSERT INTO tbl_user VALUES (:id ,:name, :email, :birth_date, :gender, :phone, :status, :touch, :join_date,:life_motto)";
+				$sql = "INSERT INTO tbl_user VALUES (:id ,:name, :email, :birth_date, :gender, :phone, :status, :touch, :join_date,:life_motto,:verified)";
 				$stmt = $con->prepare($sql);
 				$stmt->bindValue(':id', 0, PDO::PARAM_INT);
 				$stmt->bindValue(':name', $data['name'], PDO::PARAM_STR);
@@ -196,7 +198,7 @@
 				$stmt->bindValue(':touch', 0, PDO::PARAM_INT);
 				$stmt->bindValue(':join_date', date("Y/m/d"), PDO::PARAM_STR);
 				$stmt->bindValue(':life_motto', "", PDO::PARAM_STR);
-
+				$stmt->bindValue(':verified', $data['verified'], PDO::PARAM_INT);
 				if ($stmt->execute()) $ok = true;
 				else return false;
 
@@ -221,16 +223,17 @@
 
 		if ($data != null) {
 			try {
-				$sql = "INSERT INTO tb_post VALUES (:title, :content, :post_date, :id_user, :appreciate, :uninterest, :report, :status)";
+				$sql = "INSERT INTO tb_post VALUES (:id,:title, :content, :post_date, :id_user, :appreciate, :uninterest, :report, :status)";
 				$stmt = $con->prepare($sql);
+				$stmt->bindValue(':id',0,PDO::PARAM_INT);
 				$stmt->bindValue(':title', $data['title'], PDO::PARAM_STR);
 				$stmt->bindValue(':content', $data['content'], PDO::PARAM_STR);
-				$stmt->bindValue(':post_date', $data['post_date'], PDO::PARAM_STR);
+				$stmt->bindValue(':post_date', date("Y/m/d"), PDO::PARAM_STR);
 				$stmt->bindValue(':id_user', $data['id_user'], PDO::PARAM_INT);
-				$stmt->bindValue(':appreciate', $data['appreciate'], PDO::PARAM_INT);
-				$stmt->bindValue(':uninterest', $data['uninterest'], PDO::PARAM_INT);
-				$stmt->bindValue(':report', $data['report'], PDO::PARAM_INT);
-				$stmt->bindValue(':status', $data['status'], PDO::PARAM_INT);
+				$stmt->bindValue(':appreciate', 0, PDO::PARAM_INT);
+				$stmt->bindValue(':uninterest', 0, PDO::PARAM_INT);
+				$stmt->bindValue(':report', 0, PDO::PARAM_INT);
+				$stmt->bindValue(':status', 1, PDO::PARAM_INT);
 
 				if ($stmt->execute()) return true;
 				else return false;
@@ -271,7 +274,7 @@
 
 		if ($data != null) {
 			try {
-				$sql = "UPDATE tbl_user SET name = :name, birth_date = :birth_date, gender = :gender, phone = :phone, status = :status, life_motto = :life_motto  WHERE email = :email";
+				$sql = "UPDATE tbl_user SET name = :name, birth_date = :birth_date, gender = :gender, phone = :phone, status = :status, life_motto = :life_motto, verified = :verified  WHERE email = :email";
 				$stmt = $con->prepare($sql);
 				$stmt->bindValue(':name', $data['name'], PDO::PARAM_STR);
 				$stmt->bindValue(':email', $email, PDO::PARAM_STR);
@@ -280,6 +283,7 @@
 				$stmt->bindValue(':phone', $data['phone'], PDO::PARAM_STR);
 				$stmt->bindValue(':status', $data['status'], PDO::PARAM_INT);
 				$stmt->bindValue(':life_motto', $data['life_motto'], PDO::PARAM_STR);
+				$stmt->bindValue(':verified', $data['verified'], PDO::PARAM_INT);
 				if ($stmt->execute()) return true;
 				else return false;
 			} catch(Exception $e) {
@@ -338,7 +342,7 @@
 				$sql = "DELETE FROM tb_post WHERE id = :id";
 				$stmt = $con->prepare($sql);
 				$stmt->bindValue(':id', $id, PDO::PARAM_INT);
-				if ($stmt->execute()) return false;
+				if ($stmt->execute()) return true;
 				else return false;
 
 			} catch(Exception $e) {

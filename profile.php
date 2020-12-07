@@ -33,10 +33,11 @@
             $new_data['life_motto'] = isset($_POST['life_motto']) ? $_POST['life_motto'] : "";
             $new_data['touch'] = isset($_POST['touch']) ? $_POST['touch'] : "";
             $new_data['join_date'] = isset($_POST['join_date']) ? $_POST['join_date'] : "";
-
+            $new_data['verified'] = isset($_POST['verified']) ? $_POST['verified'] : "";
 
             if ($new_data['name'] == "" || $new_data['birth_date'] == "" ||$new_data['gender'] == "" ||  
-            $new_data['phone'] == "" || $new_data['status'] == "" || $new_data['life_motto'] == "") {
+            $new_data['phone'] == "" || $new_data['status'] == "" || $new_data['life_motto'] == ""
+            || $new_data['verified'] == "") {
                 echo '<div class="alert alert-danger">Pastikan semua kolom sudah diisi!</div>';
             } else {
                 $data = select_user($email);
@@ -92,6 +93,10 @@
                      <tr>
                          <th class="table-info">Life Motto</th>
                          <td><input class="form-control" type="text" name="life_motto" value="'.$data[0]['life_motto'].'" required></td>
+                     </tr>
+                     <tr>
+                         <th class="table-info">Verified</th>
+                         <td><input class="form-control" type="text" name="verified" value="'.$data[0]['verified'].'" required></td>
                      </tr>
                      <tr>
                          <td colspan="2">

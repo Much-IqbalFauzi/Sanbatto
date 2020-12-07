@@ -1,5 +1,25 @@
 <?php
+require_once "functions.php";
 
+if (!isset($_SESSION['email'])) {
+    header("Location: index.php");
+} else {
+    $email = isset($_GET['email']) ? $_GET['email'] : "";
+    $data = select_user($email);   
+
+    if (isset($_POST['sambat'])) {
+        $sambatan['content'] = isset($_POST['content']) ? $_POST['content'] : "";
+        $sambatan['id_user'] = isset($data[0]['id'])?$data[0]['id']:"";
+        $sambatan['title'] = "";
+
+        if ($sambatan['content'] == "" || $sambatan['id_user']== "") {
+            echo '<div class="alert alert-danger">Pastikan semua kolom sudah diisi!'.$sambatan['content'].' '.$sambatan['id_user'].'</div>';
+        } else {
+                if (insert_post($sambatan)) echo '<div class="alert alert-success">Sukses tambah data user!</div>';
+                else echo '<div class="alert alert-danger">Gagal tambah data user!</div>';
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,9 +40,9 @@
         <div class="w-100 mx-auto flex align-center space-between">
             <img src="./assets/light.png" alt="" id="main-page" class="ml-">
             <div class="light flex align-center space-between" style="font-size: 25px; width: 200px;">
-                <i class="fa cursor-point">&#xf015;</i>
-                <i class="fa cursor-point">&#xf007;</i>
-                <i class="fa cursor-point">&#xf129;</i>
+                <a href="welcome.php?email=<?php echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf015;</i></a>
+                <a href="profile.php?email=<?php echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf007;</i></a>
+                <a href="logout.php"><i class="fa cursor-point">&#xf129;</i></a>
                 <!-- <i class="fa"></i> -->
             </div>
         </div>  
@@ -33,13 +53,22 @@
         <div class="position-fixed ml-5" style="width: 200px">
             <div class="img-replace flex-center round-5">img replace</div>
             <div class="w-100 p-2 mt-2">
-                <h5>Alisa Illinichina Amiela</h5>
-                <span>21 tahun / Perempuan</span>
+                <?php 
+                
+                if (sizeof($data) > 0) {
+                    echo '                    
+                <form action="welcome.php?email='.$data[0]['email'].'">
+                <span>'.(date("Y") - $data[0]['birth_date']).' / '.$data[0]['gender'].'</span>
+                <h5>'.$data[0]['name'].'</h5> 
                 <div class="flex column w-100">
-                    <span>+81-082-335-8765</span>
-                    <span>amiela@alisa.com</span>
-                    <span><img src="./assets/touch-dark.png" alt="" style="height: 20px; width: 20px;"> 200 Touches</span>
+                    <span>'.$data[0]['phone'].'</span>
+                    <span>'.$data[0]['email'].'</span>
+                    <span><img src="./assets/touch-dark.png" alt="" style="height: 20px; width: 20px;"> '.$data[0]['touch'].' Touches</span>
                 </div>
+                </form>
+                ';
+            } 
+                ?>
             </div>
         </div>
         <div class=" position-fixed mr-5" style="width: 200px; right: 0;">
@@ -61,10 +90,10 @@
                 </ul>
             </div>
         </div>
-
+        <form method="post">
         <div class="input-post mx-auto">
             <div contentEditable="true" class="round-5 p-2 px-3 w-100 bg-white input-sambat">
-                Sambat Yok ...
+                <input type="text" value="Sambat Yok ..." name="content">
                 <img src="" alt="" id="img-preview__img">
                 <video src="" id="video-preview" controls></video>
             </div>
@@ -75,11 +104,11 @@
                         <i class="fa cursor-point" style="font-size: 25px;">&#xf0c6;</i>
                         <input type="file" id="inputFile" style="display: none" />
                     </label>
-                    <button class="btn btn-danger light ml-4">Lepaskan</button>
+                    <input type="submit" class="btn btn-danger light ml-4" name="sambat" value="Lepaskan">
                 </div>
             </div>
         </div>
-
+        </form>
         <ul>
             <li class="input-post">
                 

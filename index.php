@@ -11,7 +11,7 @@
             if(check_login($email,$password)){
                 $_SESSION['email'] = $email;
                 $_SESSION['user'] = select_user($email);
-                header("Refresh:1; url=profile.php");
+                header("Refresh:1; url=welcome.php?email=$email");
             }else{
                 echo "password salah";
             }

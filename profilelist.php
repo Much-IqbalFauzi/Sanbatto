@@ -32,7 +32,8 @@
                         <td>'.$val['status'].'</td>
                         <td>'.$val['touch'].'</td>
                         <td>'.$val['join_date'].'</td>
-                        <td>'.$val['life_motto'].'</td>                    
+						<td>'.$val['life_motto'].'</td>   
+						<td>'.$val['verified'].'<td>                 
                     </tr>
 				';
 			}
@@ -54,7 +55,8 @@
                         <th nowrap><center>Touch</center></th>
                         <th nowrap><center>Tanggal Join</center></th>
                         <th nowrap><center>Moto Hidup</center></th>
-					</tr>
+						<th nowrap><center>terverifikasi</center></th>
+						</tr>
 					'.$data_table.'
 				</table>
 			';
