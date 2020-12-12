@@ -29,8 +29,28 @@ document.getElementById("inputImg").addEventListener('change', function() {
             previewImg.style.display = "block";
             previewMp4.style.display = "none";
         }
+        
+
+        let placement = document.getElementById("media-placement");
+        placement.classList.remove("hide");
+        placement.classList.add("media-fadein");
         readSource.readAsDataURL(file);
+
+        
     } else {
         previewImg.style.display = "none";
+        previewMp4.style.display = "none";
     }
 });
+
+function closemedia() {
+    let previewImg = document.querySelector("#img-preview");
+    let previewMp4 = document.querySelector("#video-preview");
+    let placement = document.getElementById("media-placement");
+    placement.classList.remove("media-fadein");
+    placement.classList.add("media-fadeout");
+    setTimeout(placement.classList.add("hide"), 2000);
+    previewImg.setAttribute("src", '');
+    previewMp4.setAttribute("src", '');
+    
+}

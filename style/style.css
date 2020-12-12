@@ -69,13 +69,33 @@ li {
     background-color: #1d1d25bd;
 }
 
+.tutup-media {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    background-color: #1d1d25bd;
+    transition: .2s ease;
+}
+
 .btn-dekati {
-    border: 2px solid #10c04d;
-    transition: .3s ease;
+    border: 2px solid #23baea;
+    transition: .2s ease;
 }
 
 .btn-dekati:hover {
-    background-color: #10c04d;
+    background-color: #23baea;
+}
+
+.media-fadein {
+    visibility: visible;
+    animation: media-in 2s ease;
+    transition: .3s ease;
+}
+
+.media-fadeout {
+    visibility: hidden;
+    animation: media-out 2s ease;
+    transition: .3s ease;
 }
 
 .box::before {
@@ -157,5 +177,25 @@ li {
     }
     100% {
         transform: translate(-50%, -75%) rotate(360deg);
+    }
+}
+
+@keyframes media-in {
+    from {
+        opacity: 0;
+        transform: translateX(-300px);
+    } to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes media-out {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    } to {
+        opacity: 0;
+        transform: translateX(-300px);
     }
 }

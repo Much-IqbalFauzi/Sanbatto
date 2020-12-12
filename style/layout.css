@@ -78,6 +78,7 @@
 }
 
 .tutup-posting {
+    z-index: 100;
     width: 600px;
     height: 250px;
     opacity: 0;
@@ -88,6 +89,27 @@
 
 .postingan:hover .tutup-posting {
     opacity: 1;
+}
+
+.postingan-media {
+    position: fixed;
+    z-index: 1200;
+    bottom: 16px;
+    left: 48px;
+    width: 200px;
+    height: 100px;
+    transform: translateX(0);
+    transition: .2s ease;
+}
+
+.postingan-media:hover .tutup-media {
+    visibility: visible;
+    opacity: 1;
+}
+
+.hide {
+    opacity: 0;
+    visibility: hidden;
 }
 
 #search-user-online {
@@ -118,8 +140,6 @@
 
 #img-preview{
     display: none;
-    height: 100px;
-    width: 200px;
 }
 
 #video-preview {

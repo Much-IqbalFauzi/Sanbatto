@@ -93,11 +93,14 @@
                             <i class="fa cursor-point" style="font-size: 25px;">&#xf0c6;</i>
                             <input type="file" id="inputImg" style="display: none"/>
                         </label>
-                        <input type="submit" class="btn bg-light-green light ml-4" name="sambat" value="Lepaskan">
+                        <input type="submit" class="btn bg-light-blue dark-blue ml-4" name="sambat" value="Lepaskan">
                     </div>
                 </div>
-                <div class="position-relative mt-2 px-4">
-                    <img src="" alt="" id="img-preview">
+                <div class="postingan-media px-4 py-2 rounded shadow overflow-hidden flex-center hide" id="media-placement">
+                    <div class="h-100 w-100 tutup-media">
+                        <i class="fa cursor-point light float-right m-2" onclick="closemedia()">&#xf00d;</i>
+                    </div>
+                    <img src="" alt="" id="img-preview" height="100px" width="auto">
                     <video src="" id="video-preview" controls></video>
                 </div>
             </div>
@@ -107,7 +110,7 @@
                 <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height shadow postingan">
                     <div class="tutup-posting round-5 flex-center column light">
                         <h3>Sambatan Dono</h3>
-                        <button class="btn btn-dekati px-4 light-green">Dekati</button>
+                        <button class="btn btn-dekati px-4 light-blue">Dekati</button>
                     </div>
                     <div class="w-100 h-100 flex-center">
                         <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img">
