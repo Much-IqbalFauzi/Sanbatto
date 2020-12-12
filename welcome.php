@@ -54,7 +54,7 @@
     <!-- main -->
     <div class="py-3 mt-2">
         <div class="position-fixed ml-5" style="width: 200px">
-            <div class="img-replace flex-center round-5">img replace</div>
+            <div class="img-replace flex-center round-5 shadow">img replace</div>
             <div class="w-100 p-2 mt-2">
             <h5>Alisa Illinichina Amiela</h5>
             <span>22 tahun / Perempuan</span>
@@ -68,14 +68,15 @@
         <!-- SIDE -->
         <div class=" position-fixed mr-5" style="width: 200px; right: 0;">
             <div >
-                <input type="text" placeholder="cari user online" name="" id="" class="w-100 pl-4 p-2 round-5">
+                <input type="text" placeholder="cari user online" name="" id="" class="w-100 pl-4 p-2 round-5 shadow-sm">
                 <i class="fa" id="search-user-online">&#xf002;</i>
             </div>
+            <hr>
             <div class="p-1">
                 <ul>
                     <li class="flex align-center p-2">
                         <div class="user-pict rounded-circle"></div>
-                        <span class="mx-2">Daisuke</span>
+                        <span class="ml-2">Daisuke</span>
                     </li>
                 </ul>
             </div>
@@ -83,8 +84,8 @@
         <!-- POSTING  -->
         <form method="post">
             <div class="input-post mx-auto">
-                <input type="text" name="title" placeholder="Kamu ingin . . . marah / nangis / teriak ?" class="round-5 p-2 px-3 w-100 bg-white mb-2 border border-dark">
-                <textarea  class="round-5 p-2 px-3 w-100 bg-white input-sambat border border-dark" placeholder="Sambat Yokk..." type="text" name="content"></textarea>
+                <input type="text" name="title" placeholder="Bagaimana perasaanmu ?" class="round-5 p-2 px-3 w-100 bg-white mb-2 shadow">
+                <textarea  class="round-5 p-2 px-3 w-100 bg-white input-sambat shadow" placeholder="Sambat Yokk..." type="text" name="content"></textarea>
                 <div class="w-100 mt-2 clearfix">
                     <span id="url-file"></span>
                     <div class="float-right flex align-center">
@@ -103,13 +104,13 @@
         </form>
         <ul>
             <li class="mt-5">
-                <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height border border-dark postingan">
+                <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height shadow postingan">
                     <div class="tutup-posting round-5 flex-center column light">
                         <h3>Sambatan Dono</h3>
                         <button class="btn btn-dekati px-4 light-green">Dekati</button>
                     </div>
                     <div class="w-100 h-100 flex-center">
-                        <img src="./assets/sample.jpg" alt="" id="post-img">
+                        <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img">
                         <video src="" id="post-video" hidden></video>
                     </div>
                     

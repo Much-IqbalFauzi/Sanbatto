@@ -70,6 +70,13 @@
     background-color: blueviolet;
 }
 
+.user-pict-lg {
+    width: 40px;
+    height: 40px;
+
+    background-color: blueviolet;
+}
+
 .tutup-posting {
     width: 600px;
     height: 250px;

@@ -35,60 +35,64 @@
     <div class="py-3 mt-2">
         <!-- SIDE -->
         <div class=" position-fixed mr-5" style="width: 200px; right: 0;">
-            <div >
-                <input type="text" placeholder="cari user online" name="" id="" class="w-100 pl-4 p-2 round-5">
+            <div>
+                <input type="text" placeholder="cari user online" name="" id="" class="w-100 pl-4 p-2 round-5 border-sm">
                 <i class="fa" id="search-user-online">&#xf002;</i>
             </div>
+            <hr>
             <div class="p-1">
                 <ul>
                     <li class="flex align-center p-2">
                         <div class="user-pict rounded-circle"></div>
-                        <span class="mx-2">Daisuke</span>
+                        <span class="ml-2">Daisuke</span>
                     </li>
                 </ul>
             </div>
         </div>
         <!-- POSTING  -->
-        <form method="post">
-            <div class="input-post mx-auto">
-                <input type="text" name="title" placeholder="Kamu ingin . . . marah / nangis / teriak ?" class="round-5 p-2 px-3 w-100 bg-white mb-2 border border-dark">
-                <textarea  class="round-5 p-2 px-3 w-100 bg-white input-sambat border border-dark" placeholder="Sambat Yokk..." type="text" name="content"></textarea>
-                <div class="w-100 mt-2 clearfix">
-                    <span id="url-file"></span>
-                    <div class="float-right flex align-center">
-                        <label>
-                            <i class="fa cursor-point" style="font-size: 25px;">&#xf0c6;</i>
-                            <input type="file" id="inputImg" style="display: none"/>
-                        </label>
-                        <input type="submit" class="btn bg-light-green light ml-4" name="sambat" value="Lepaskan">
-                    </div>
-                </div>
-                <div class="position-relative mt-2 px-4">
-                    <img src="" alt="" id="img-preview">
-                    <video src="" id="video-preview" controls></video>
+        <div class="overflow-hidden mx-auto input-post round-5 p-3 shadow">
+            <div class="w-100 flex align-center p-2">
+                <div class="user-pict-lg rounded-circle"></div>
+                <div class="ml-2">
+                    <h5 class="mb-0"><a href="#" class=" dark-blue">Daisuke</a></h5>
+                    <span class="light-blue-super">tanggal</span>
                 </div>
             </div>
-        </form>
-        <ul>
-            <li class="mt-5">
-                <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height border border-dark postingan">
-                    <div class="tutup-posting round-5 flex-center column light">
-                        <h3>Sambatan Dono</h3>
-                        <button class="btn btn-dekati px-4 light-green">Dekati</button>
-                    </div>
-                    <div class="w-100 h-100 flex-center">
-                        <img src="./assets/sample.jpg" alt="" id="post-img">
-                        <video src="" id="post-video" hidden></video>
-                    </div>
-                    
+            <div class="w-100 mt-2">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque maxime laudantium officia repudiandae eaque necessitatibus minus natus, inventore ab nostrum iste aliquam odio architecto rem hic obcaecati quo aliquid! Exercitationem.</p>
+            </div>
+            <div class="w-100 h-100 flex-center mt-2">
+                <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img-profile" width="100%" height="auto">
+                <video src="" id="post-video" hidden></video>
+            </div>
+            <div class="w-100 mt-2 px-2">
+                <i class="fa appreciate">&#xf087;</i>
+            </div>
+            <hr>
+            <form action="">
+                <div class="w-100 mt-2 flex align-center px-2">
+                    <div class="user-pict rounded-circle"></div>
+                    <input type="text" class="ml-2 pl-4 p-2 round-5 shadow-sm w-100 float-right" placeholder="Yok..Tenangkan!">
                 </div>
-            </li>
-        </ul>
+            </form>
+            <hr>
+            <ul>
+                <li>
+                    <div class="w-100 mt-2 flex align-center px-2">
+                        <div class="user-pict rounded-circle"></div>
+                        <div class="ml-2">
+                            <p class="m-0">Komentar</p>
+                            <span>tanggal</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 
     
-    <script src="./script/main.js"></script>
+    <!-- <script src="./script/main.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="./script/main.js"></script>
+    <!-- <script src="./script/main.js"></script> -->
 </body>
 </html>
