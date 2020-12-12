@@ -1,5 +1,6 @@
 // const fileImg = document.getElementById("inputImg");
 // const inputVideo = document.getElementById("inputVideo");
+let placement = document.getElementById("media-placement");
 
 document.getElementById("inputImg").addEventListener('change', function() {
     let previewImg = document.querySelector("#img-preview");
@@ -31,7 +32,8 @@ document.getElementById("inputImg").addEventListener('change', function() {
         }
         
 
-        let placement = document.getElementById("media-placement");
+        
+        placement.classList.remove("media-fadeout");
         placement.classList.remove("hide");
         placement.classList.add("media-fadein");
         readSource.readAsDataURL(file);
@@ -46,7 +48,6 @@ document.getElementById("inputImg").addEventListener('change', function() {
 function closemedia() {
     let previewImg = document.querySelector("#img-preview");
     let previewMp4 = document.querySelector("#video-preview");
-    let placement = document.getElementById("media-placement");
     placement.classList.remove("media-fadein");
     placement.classList.add("media-fadeout");
     setTimeout(placement.classList.add("hide"), 2000);
