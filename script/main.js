@@ -1,35 +1,34 @@
-//file choose
-const inputFile = document.getElementById("inputFile");
-const previewImg = document.querySelector("#img-preview__img");
-const previewMp4 = document.querySelector("#video-preview");
+// const fileImg = document.getElementById("inputImg");
+// const inputVideo = document.getElementById("inputVideo");
 
-inputFile.addEventListener('change', function() {
+document.getElementById("inputImg").addEventListener('change', function() {
+    let previewImg = document.querySelector("#img-preview");
+    let previewMp4 = document.querySelector("#video-preview");
     const file = this.files[0];
-    console.log("hello this empty");
     if (file) {
         const readSource = new FileReader();
+        console.log(file.type);
 
-        try {
-            readSource.addEventListener("load", function() {
-                previewImg.setAttribute("src", this.result);
-            });
-    
-            previewImg.style.display = "block";
-        } catch(err) {
-            console.log(err)
-        }
-
-        try {
+        if(file.type == "video/mp4") {
             readSource.addEventListener("load", function() {
                 previewMp4.setAttribute("src", this.result);
+                previewImg.setAttribute("src", '');
+                console.log(this.result)
             });
     
             previewMp4.style.display = "block";
-        } catch(err) {
-            console.log(err)
+            previewImg.style.display = "none";
         }
-
-        
+        if(file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") {
+            readSource.addEventListener("load", function() {
+                previewImg.setAttribute("src", this.result);
+                previewMp4.setAttribute("src", '');
+                console.log(this.result)
+            });
+    
+            previewImg.style.display = "block";
+            previewMp4.style.display = "none";
+        }
         readSource.readAsDataURL(file);
     } else {
         previewImg.style.display = "none";

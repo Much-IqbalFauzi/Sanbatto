@@ -47,13 +47,14 @@
     background-color: cadetblue;
 }
 
-.circle-online {
-    width: 10px;
-    height: 10px;
-}
-
 .input-post {
     width: 600px;
+}
+
+.main-post-height {
+    height: 250px;
+    height: 250px;
+    /* background-color: brown; */
 }
 
 .input-sambat {
@@ -66,8 +67,20 @@
     width: 30px;
     height: 30px;
 
-
     background-color: blueviolet;
+}
+
+.tutup-posting {
+    width: 600px;
+    height: 250px;
+    opacity: 0;
+    position: absolute;
+    transform: translate(-16px, -16px);
+    transition: .2s ease;
+}
+
+.postingan:hover .tutup-posting {
+    opacity: 1;
 }
 
 #search-user-online {
@@ -96,14 +109,18 @@
     width: auto;
 }
 
-#img-preview__img {
+#img-preview{
     display: none;
-    max-width: 550px;
-    height: auto;
+    height: 100px;
+    width: 200px;
 }
 
 #video-preview {
     display: none;
-    max-width: 550px;
-    height: auto;
+    width: auto;
+    height: 100px;
+}
+
+#post-img{
+    max-height: 100%;
 }

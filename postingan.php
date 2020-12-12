@@ -1,27 +1,7 @@
 <?php
-    
 
-    // if (!isset($_SESSION['email'])) {
-    //     header("Location: index.php");
-    // }
-    // require_once "functions.php";
-    // $email = isset($_GET['email']) ? $_GET['email'] : "";
-    // $data = select_user($email);   
-
-    // if (isset($_POST['sambat'])) {
-    //     $sambatan['content'] = isset($_POST['content']) ? $_POST['content'] : "";
-    //     $sambatan['id_user'] = isset($data[0]['id'])?$data[0]['id']:"";
-    //     $sambatan['title'] = "";
-
-    //     if ($sambatan['content'] == "" || $sambatan['id_user']== "") {
-    //         echo '<div class="alert alert-danger">Pastikan semua kolom sudah diisi!'.$sambatan['content'].' '.$sambatan['id_user'].'</div>';
-    //     } else {
-    //             if (insert_post($sambatan)) {echo '<div class="alert alert-success">Sukses tambah post!</div>';
-    //             header("Refresh:1; url=welcome.php?email=$email");}
-    //             else echo '<div class="alert alert-danger">Gagal tambah data user!</div>';
-    //     }
-    // }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,18 +33,6 @@
 
     <!-- main -->
     <div class="py-3 mt-2">
-        <div class="position-fixed ml-5" style="width: 200px">
-            <div class="img-replace flex-center round-5">img replace</div>
-            <div class="w-100 p-2 mt-2">
-            <h5>Alisa Illinichina Amiela</h5>
-            <span>22 tahun / Perempuan</span>
-            <div class="flex column w-100">
-                <span>+81-2388-7164-2989</span>
-                <span>Alisa@amiela.com</span>
-                <span><img src="./assets/touch-dark.png" alt="" style="height: 20px; width: 20px;">200 Touches</span>
-            </div>
-            </div>
-        </div>
         <!-- SIDE -->
         <div class=" position-fixed mr-5" style="width: 200px; right: 0;">
             <div >

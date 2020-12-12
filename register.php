@@ -1,9 +1,8 @@
 <?php
-		require_once "functions.php";
-
 		if (isset($_SESSION['email'])) {
 			header("Location: welcome.php");
 		} else {
+            require_once "functions.php";
 			if (isset($_POST['tambah'])) {
 				$tambah_data['name'] = isset($_POST['name']) ? $_POST['name'] : "";
 				$tambah_data['phone'] = isset($_POST['phone']) ? $_POST['phone'] : "";

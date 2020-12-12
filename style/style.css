@@ -58,8 +58,21 @@ li {
     cursor: pointer;
 }
 
-.side {
-    border-left: 1px solid #1d1d25;
+.borderr {
+    border: 1px solid #1d1d25;
+}
+
+.tutup-posting {
+    background-color: #1d1d25bd;
+}
+
+.btn-dekati {
+    border: 2px solid #10c04d;
+    transition: .3s ease;
+}
+
+.btn-dekati:hover {
+    background-color: #10c04d;
 }
 
 .box::before {

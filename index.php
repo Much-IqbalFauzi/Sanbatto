@@ -1,9 +1,9 @@
 <?php
-    require_once "functions.php";
 
     if(isset($_SESSION['email'])){
         header("Location: welcome.php");
     }else{
+        require_once "functions.php";
         echo "<script>console.log('Debug Objects: oooo' );</script>";
         if(isset($_POST['login'])){
             $email = $_POST['email'];
