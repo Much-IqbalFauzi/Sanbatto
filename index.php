@@ -3,7 +3,7 @@
     if(isset($_SESSION['email'])){
         header("Location: welcome.php");
     }else{
-        require_once "functions.php";
+        require_once "functions/user.php";
         echo "<script>console.log('Debug Objects: oooo' );</script>";
         if(isset($_POST['login'])){
             $email = $_POST['email'];

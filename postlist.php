@@ -13,7 +13,7 @@
 <body>
 <h2>Post List</h2>
 <?php
-		require_once "functions.php";
+		require_once "functions/post.php";
 
 		if (!isset($_SESSION['email'])) {
 			header("Location: index.php");

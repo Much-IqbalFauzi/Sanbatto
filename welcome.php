@@ -4,7 +4,7 @@
     // if (!isset($_SESSION['email'])) {
     //     header("Location: index.php");
     // }
-    // require_once "functions.php";
+    // require_once "functions/user.php";
     // $email = isset($_GET['email']) ? $_GET['email'] : "";
     // $data = select_user($email);   
 

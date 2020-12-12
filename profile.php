@@ -14,7 +14,7 @@
 <h2>Profile</h2>
 <a href="logout.php">Logout</a>
 <?php
- require_once "functions.php";
+ require_once "functions/user.php";
 
  if (!isset($_SESSION['email'])) {
      header("Location: index.php");

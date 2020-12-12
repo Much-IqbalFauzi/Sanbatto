@@ -13,7 +13,7 @@
 <body>
 <h2>Profile List</h2>
 <?php
-		require_once "functions.php";
+		require_once "functions/user.php";
 
 		if (!isset($_SESSION['email'])) {
 			header("Location: index.php");
