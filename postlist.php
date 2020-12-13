@@ -22,11 +22,12 @@
 			$hapus = isset($_GET['hapus']) ? $_GET['hapus'] : "";
 			if ($hapus != "") {
 				$id = "";
-				$data = select_post($hapus);
+				$data = select_post_id($hapus);
 				if (sizeof($data) > 0) {
 					if (delete_post($hapus)) echo '<div class="alert alert-success">Sukses hapus data </div>';
 					else echo '<div class="alert alert-danger">Gagal hapus data </div>';
 				} else {
+					echo $data[0]['id'];
 					echo '<div class="alert alert-danger">post ('.$hapus.') tidak ditemukan!</div>';
 				}
 			}

@@ -31,6 +31,7 @@
 						$hasil[$i]['join_date'] = $val['join_date'];
 						$hasil[$i]['life_motto'] = $val['life_motto'];
 						$hasil[$i]['verified'] = $val['verified'];
+						$hasil[$i]['file_source'] = $val['profile_photo'];
 						$i++;
         			}
         		}
@@ -72,6 +73,7 @@
 						$hasil[$i]['join_date'] = $val['join_date'];
 						$hasil[$i]['life_motto'] = $val['life_motto'];
 						$hasil[$i]['verified'] = $val['verified'];
+						$hasil[$i]['file_source'] = $val['profile_photo'];
 						$i++;
         			}
         		}
@@ -82,6 +84,45 @@
 
 		return $hasil;
 	}
+
+	function select_user_online() {
+		global $con;
+
+		$hasil = array();
+
+		$sql = "SELECT * FROM tbl_user WHERE status = 1";
+
+		try {
+            $stmt = $con->prepare($sql);
+            if ($stmt->execute()) {
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        		$rs = $stmt->fetchAll();
+        		
+        		if ($rs != null) {
+        			$i = 0;
+        			foreach ($rs as $val) {
+        				$hasil[$i]['id'] = $val['id'];
+        				$hasil[$i]['name'] = $val['name'];
+						$hasil[$i]['email'] = $val['email'];
+						$hasil[$i]['birth_date'] = $val['birth_date'];
+						$hasil[$i]['gender'] = $val['gender'];
+						$hasil[$i]['phone'] = $val['phone'];
+						$hasil[$i]['status'] = $val['status'];
+						$hasil[$i]['touch'] = $val['touch'];
+						$hasil[$i]['join_date'] = $val['join_date'];
+						$hasil[$i]['life_motto'] = $val['life_motto'];
+						$hasil[$i]['verified'] = $val['verified'];
+						$hasil[$i]['file_source'] = $val['profile_photo'];
+						$i++;
+        			}
+        		}
+        	}
+        } catch(Exception $e) {
+			echo 'Error select_data : '.$e->getMessage();
+		}
+		return $hasil;
+	}
+
 
 	function select_user_name($name="") {
 		global $con;
@@ -113,6 +154,7 @@
 						$hasil[$i]['join_date'] = $val['join_date'];
 						$hasil[$i]['life_motto'] = $val['life_motto'];
 						$hasil[$i]['verified'] = $val['verified'];
+						$hasil[$i]['file_source'] = $val['profile_photo'];
 						$i++;
         			}
         		}
@@ -153,7 +195,7 @@
 
 		if ($data != null) {
 			try {
-				$sql = "INSERT INTO tbl_user VALUES (:id ,:name, :email, :birth_date, :gender, :phone, :status, :touch, :join_date,:life_motto,:verified)";
+				$sql = "INSERT INTO tbl_user VALUES (:id ,:name, :email, :birth_date, :gender, :phone, :status, :touch, :join_date,:life_motto,:verified,:file_source)";
 				$stmt = $con->prepare($sql);
 				$stmt->bindValue(':id', 0, PDO::PARAM_INT);
 				$stmt->bindValue(':name', $data['name'], PDO::PARAM_STR);
@@ -166,6 +208,7 @@
 				$stmt->bindValue(':join_date', date("Y/m/d"), PDO::PARAM_STR);
 				$stmt->bindValue(':life_motto', "", PDO::PARAM_STR);
 				$stmt->bindValue(':verified', "", PDO::PARAM_INT);
+				$stmt->bindValue(':file_source', "", PDO::PARAM_STR);
 				if ($stmt->execute()) $ok = true;
 				else return false;
 
@@ -190,7 +233,7 @@
 
 		if ($data != null) {
 			try {
-				$sql = "UPDATE tbl_user SET name = :name, birth_date = :birth_date, gender = :gender, phone = :phone, status = :status, life_motto = :life_motto, verified = :verified  WHERE email = :email";
+				$sql = "UPDATE tbl_user SET name = :name, birth_date = :birth_date, gender = :gender, phone = :phone, status = :status, life_motto = :life_motto, verified = :verified, profile_photo=:file_source  WHERE email = :email";
 				$stmt = $con->prepare($sql);
 				$stmt->bindValue(':name', $data['name'], PDO::PARAM_STR);
 				$stmt->bindValue(':email', $email, PDO::PARAM_STR);
@@ -200,6 +243,7 @@
 				$stmt->bindValue(':status', $data['status'], PDO::PARAM_INT);
 				$stmt->bindValue(':life_motto', $data['life_motto'], PDO::PARAM_STR);
 				$stmt->bindValue(':verified', $data['verified'], PDO::PARAM_INT);
+				$stmt->bindValue(':file_source', $data['file_source'], PDO::PARAM_STR);
 				if ($stmt->execute()) return true;
 				else return false;
 			} catch(Exception $e) {

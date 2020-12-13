@@ -6,7 +6,7 @@
 
 		$hasil = array();
 
-		if ($id != 0) $sql = "SELECT * FROM tb_post WHERE id = :id";
+		if ($id != 0) $sql = "SELECT * FROM tb_post WHERE id_user = :id";
 		else $sql = "SELECT * FROM tb_post";
 
 		try {
@@ -29,6 +29,7 @@
 						$hasil[$i]['uninterest'] = $val['uninterest'];
 						$hasil[$i]['report'] = $val['report'];
 						$hasil[$i]['status'] = $val['status'];
+						$hasil[$i]['file_source'] = $val['file_source'];
 						$i++;
         			}
         		}
@@ -40,12 +41,53 @@
 		return $hasil;
 	}
 
+	function select_post_id($idPost=0) {
+		global $con;
+
+		$hasil = array();
+
+		if ($idPost != 0) $sql = "SELECT * FROM tb_post WHERE id = :id";
+		else $sql = "SELECT * FROM tb_post";
+
+		try {
+            $stmt = $con->prepare($sql);
+            if ($idPost != "") $stmt->bindValue(':id', $idPost, PDO::PARAM_INT);
+
+            if ($stmt->execute()) {
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        		$rs = $stmt->fetchAll();
+        		
+        		if ($rs != null) {
+        			$i = 0;
+        			foreach ($rs as $val) {
+        				$hasil[$i]['id'] = $val['id'];
+        				$hasil[$i]['title'] = $val['title'];
+						$hasil[$i]['content'] = $val['content'];
+						$hasil[$i]['post_date'] = $val['post_date'];
+						$hasil[$i]['id_user'] = $val['id_user'];
+						$hasil[$i]['appreciate'] = $val['appreciate'];
+						$hasil[$i]['uninterest'] = $val['uninterest'];
+						$hasil[$i]['report'] = $val['report'];
+						$hasil[$i]['status'] = $val['status'];
+						$hasil[$i]['file_source'] = $val['file_source'];
+						$i++;
+        			}
+        		}
+        	}
+        } catch(Exception $e) {
+			echo 'Error select_data : '.$e->getMessage();
+		}
+
+		return $hasil;
+	}
+
+
 	function insert_post($data) {
 		global $con;
 
 		if ($data != null) {
 			try {
-				$sql = "INSERT INTO tb_post VALUES (:id,:title, :content, :post_date, :id_user, :appreciate, :uninterest, :report, :status)";
+				$sql = "INSERT INTO tb_post VALUES (:id,:title, :content, :post_date, :id_user, :appreciate, :uninterest, :report, :status, :file_source)";
 				$stmt = $con->prepare($sql);
 				$stmt->bindValue(':id',0,PDO::PARAM_INT);
 				$stmt->bindValue(':title', $data['title'], PDO::PARAM_STR);
@@ -56,6 +98,7 @@
 				$stmt->bindValue(':uninterest', 0, PDO::PARAM_INT);
 				$stmt->bindValue(':report', 0, PDO::PARAM_INT);
 				$stmt->bindValue(':status', 1, PDO::PARAM_INT);
+				$stmt->bindValue(':file_source', $data['file_source'], PDO::PARAM_STR);
 
 				if ($stmt->execute()) return true;
 				else return false;

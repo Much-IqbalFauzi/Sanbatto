@@ -176,5 +176,24 @@
     border-radius: 20px;
 }
 
+#foto-profile div {
+    opacity: 0;
+    height: 280px;
+    position: absolute;
+    transition: .2s ease;
+}
+
+#foto-profile div i {
+    font-size: 40px;
+}
+
+#foto-profile div:hover {
+    opacity: .6;
+}
+
+#foto-profile div:hover i {
+    opacity: 1;
+}
+
 
 

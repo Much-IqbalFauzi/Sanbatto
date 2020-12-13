@@ -7,7 +7,7 @@
         header("Location: index.php");
     } else {
         $email = isset($_GET['email']) ? $_GET['email'] : "";
-        $idPost = isset($_GET['idPost'])?$_GET['idPost']:"";
+        $idPost = isset($_GET['id_post'])?$_GET['id_post']:"";
     }
    
 ?>
@@ -33,10 +33,11 @@
             <div class="flex align-center space-between" style="font-size: 25px; width: 200px;">
                 <!-- <a href="welcome.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf015;</i></a>
                 <a href="profile.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf007;</i></a> -->
-                <a href=""><i class="fa light cursor-point">&#xf015;</i></a>
-                <a href=""><i class="fa light cursor-point">&#xf007;</i></a>
-                <a href=""><i class="fa light cursor-point">&#xf129;</i></a>
+                <?php echo '<a href="welcome.php?email='.$email.'"><i class="fa light cursor-point">&#xf015;</i></a>
+                <a href="account.php?email='.$email.'"><i class="fa light cursor-point">&#xf007;</i></a>
+                <a href="logout.php"><i class="fa light cursor-point">&#xf129;</i></a>
                 <a href="logout.php"><i class="fa dark-blue cursor-point">	&#xf08b;</i></a>
+                ';?>
                 <!-- <i class="fa"></i> -->
             </div>
         </div>  
@@ -62,8 +63,7 @@
         </div>
         <!-- POSTING  -->
         <?php
-
-        $postData = select_post($idPost);
+        $postData = select_post_id($idPost);
         $userData = select_user_id($postData[0]['id_user']);
         if(sizeof($postData)>0){
         echo'
@@ -79,7 +79,7 @@
                 <p>'.$postData[0]['content'].'</p>
             </div>
             <div class="w-100 h-100 flex-center mt-2">
-                <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img-profile" width="100%" height="auto">
+                <img src="./'.$postData[0]['file_source'].'" alt="" class="rounded" id="post-img-profile" width="100%" height="auto">
                 <video src="" id="post-video" hidden></video>
             </div>
             <div class="w-100 mt-2 px-2">
@@ -99,7 +99,7 @@
             <hr>
             <ul>
             <?php
-            $komentar = select_comment_post("26");
+            $komentar = select_comment_post($idPost);
             foreach ($komentar as $key => $val) {
             echo'
                 <li>

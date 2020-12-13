@@ -12,6 +12,39 @@
          $sambatan['content'] = isset($_POST['content']) ? $_POST['content'] : "";
          $sambatan['id_user'] = isset($data[0]['id'])?$data[0]['id']:"";
          $sambatan['title'] = isset($_POST['title'])?$_POST['title']: "";
+         $fileDestination="";
+         
+     if(isset($_FILES['file'])){
+         echo "ini di set";
+         $file = $_FILES['file'];
+         $fileName = $_FILES['file']['name'];
+         $fileTmpName = $_FILES['file']['tmp_name'];
+         $fileSize = $_FILES['file']['size'];
+         $fileError = $_FILES['file']['error'];
+         $fileType = $_FILES['file']['type'];
+        echo $fileName;
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+        
+        $allowed = array('jpg', 'jpeg', 'png', 'pdf', 'mp4', 'mkv');
+        if(in_array($fileActualExt, $allowed)){
+            if($fileError===0){
+                if($fileSize<1000000){
+                    $fielNameNew = uniqid('', true).".".$fileActualExt;
+                    $fileDestination = 'uploads/'.$fielNameNew;
+                    move_uploaded_file($fileTmpName, $fileDestination);
+                    
+                }else{
+                    echo "maaf, file terlalu besar";
+                }
+            }else{
+                echo "maaf, terjadi kesalahan saat menguplad";
+            }
+        }else{
+            echo "duh".$file."tipe file tidak bisa diupload";
+        }
+    }
+        $sambatan['file_source'] = $fileDestination?$fileDestination:"";
 
          if ($sambatan['content'] == "" || $sambatan['id_user']== "") {
              echo '<div class="alert alert-danger">Pastikan semua kolom sudah diisi!'.$sambatan['content'].' '.$sambatan['id_user'].'</div>';
@@ -44,10 +77,12 @@
             <div class="flex align-center space-between" style="font-size: 25px; width: 200px;">
                 <!-- <a href="welcome.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf015;</i></a>
                 <a href="profile.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf007;</i></a> -->
-                <a href=""><i class="fa light cursor-point">&#xf015;</i></a>
-                <a href=""><i class="fa light cursor-point">&#xf007;</i></a>
+                <?php echo '
+                <a href="welcome.php?email='.$email.'"><i class="fa light cursor-point">&#xf015;</i></a>
+                <a href="account.php?email='.$email.'"><i class="fa light cursor-point">&#xf007;</i></a>
                 <a href=""><i class="fa light cursor-point">&#xf129;</i></a>
                 <a href="logout.php"><i class="fa dark-blue cursor-point">	&#xf08b;</i></a>
+                ';?>
                 <!-- <i class="fa"></i> -->
             </div>
         </div>  
@@ -80,15 +115,20 @@
             <hr>
             <div class="p-1">
                 <ul>
+                <?php
+                $online = select_user_online();
+                foreach ($online as $key => $on) {
+                echo'
                     <li class="flex align-center p-2">
                         <div class="user-pict rounded-circle"></div>
-                        <span class="ml-2">Daisuke</span>
-                    </li>
+                        <span class="ml-2">'.$on['name'].'</span>
+                    </li>';
+                 } ?>
                 </ul>
             </div>
         </div>
         <!-- POSTING  -->
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="input-post mx-auto">
                 <input type="text" name="title" placeholder="Bagaimana perasaanmu ?" class="round-5 p-2 px-3 w-100 bg-white mb-2 shadow">
                 <textarea  class="round-5 p-2 px-3 w-100 bg-white input-sambat shadow" placeholder="Sambat Yokk..." type="text" name="content"></textarea>
@@ -97,7 +137,7 @@
                     <div class="float-right flex align-center">
                         <label>
                             <i class="fa cursor-point" style="font-size: 25px;">&#xf0c6;</i>
-                            <input type="file" id="inputImg" style="display: none"/>
+                            <input type="file" id="inputImg" style="display: none" name="file"/>
                         </label>
                         <input type="submit" class="btn bg-light-blue dark-blue ml-4" name="sambat" value="Lepaskan">
                     </div>
@@ -120,7 +160,7 @@
                 <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height shadow postingan">
                     <div class="tutup-posting round-5 flex-center column light">
                         <h3>'.$val['title'].'</h3>
-                        <button class="btn btn-dekati px-4 light-blue"><a href="postingan.php?email='.$email.'">Dekati</a></button>
+                        <button class="btn btn-dekati px-4 light-blue"><a href="postingan.php?email='.$email.'&id_post='.$val['id'].'">Dekati</a></button>
                     </div>
                     <div class="w-100 h-100 flex-center">
                         <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img">
