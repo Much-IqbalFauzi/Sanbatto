@@ -1,5 +1,15 @@
 <?php
+    require_once "functions/post.php";
+    require_once "functions/user.php";
+    require_once "functions/comment.php";
 
+    if (!isset($_SESSION['email'])) {
+        header("Location: index.php");
+    } else {
+        $email = isset($_GET['email']) ? $_GET['email'] : "";
+        $idPost = isset($_GET['idPost'])?$_GET['idPost']:"";
+    }
+   
 ?>
 
 
@@ -51,16 +61,22 @@
             </div>
         </div>
         <!-- POSTING  -->
+        <?php
+
+        $postData = select_post($idPost);
+        $userData = select_user_id($postData[0]['id_user']);
+        if(sizeof($postData)>0){
+        echo'
         <div class="overflow-hidden mx-auto input-post round-5 p-3 shadow">
             <div class="w-100 flex align-center p-2">
                 <div class="user-pict-lg rounded-circle"></div>
                 <div class="ml-2">
-                    <h5 class="mb-0"><a href="#" class=" dark-blue">Daisuke</a></h5>
-                    <span class="light-blue-super">tanggal</span>
+                    <h5 class="mb-0"><a href="#" class=" dark-blue">'.$userData[0]['name'].'</a></h5>
+                    <span class="light-blue-super">'.$postData[0]['post_date'].'</span>
                 </div>
             </div>
             <div class="w-100 mt-2">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque maxime laudantium officia repudiandae eaque necessitatibus minus natus, inventore ab nostrum iste aliquam odio architecto rem hic obcaecati quo aliquid! Exercitationem.</p>
+                <p>'.$postData[0]['content'].'</p>
             </div>
             <div class="w-100 h-100 flex-center mt-2">
                 <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img-profile" width="100%" height="auto">
@@ -70,6 +86,10 @@
                 <i class="fa appreciate">&#xf087;</i>
             </div>
             <hr>
+            ';
+        }
+            
+        ?>
             <form action="">
                 <div class="w-100 mt-2 flex align-center px-2">
                     <div class="user-pict rounded-circle"></div>
@@ -78,15 +98,23 @@
             </form>
             <hr>
             <ul>
+            <?php
+            $komentar = select_comment_post("26");
+            foreach ($komentar as $key => $val) {
+            echo'
                 <li>
                     <div class="w-100 mt-2 flex align-center px-2">
                         <div class="user-pict rounded-circle"></div>
                         <div class="ml-2">
-                            <p class="m-0">Komentar</p>
-                            <span>tanggal</span>
+                            <h5>'.select_user_id($val['id_user'])[0]['name'].'</h5>
+                            <p class="m-0">'.$val['comment'].'</p>
+                            <span>'.$val['comment_date'].'</span>
                         </div>
                     </div>
                 </li>
+                ';
+            }
+                ?>
             </ul>
         </div>
     </div>

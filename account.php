@@ -88,7 +88,7 @@
             <h4>Motto Gann</h4>
         </div>
         <hr>
-        <form action="account.php?email='.$data[0]['email'].'">
+        <form  method="post" action="account.php?email='.$data[0]['email'].'">
             <div class="w-100 p-2 flex">
                 <div class="w-50">
                 <input onkeypress="showSaveBtn()" type="hidden" name="status" value="'.$data[0]['status'].'" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
@@ -106,7 +106,7 @@
                 </div>
                 <div class="w-50">
                     <h6>Jenis Kelamin</h6>
-                    <select onchange="showSaveBtn()" name="gender" id="" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
+                    <select onchange="showSaveBtn()" name="gender" id="gender" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
                         <option value="none">Tidak diketahui</option>
                         <option value="Laki-laki">Laki-laki</option>
                         <option value="Perempuan">Perempuan</option>

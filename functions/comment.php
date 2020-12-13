@@ -36,6 +36,42 @@
 		return $hasil;
 	}
 
+	function select_comment_post($idPost=0) {
+		global $con;
+
+		$hasil = array();
+
+		if ($idPost != 0) $sql = "SELECT * FROM tb_comment WHERE id_post = :id_post";
+		else $sql = "SELECT * FROM tb_comment";
+
+		try {
+            $stmt = $con->prepare($sql);
+            if ($idPost != "") $stmt->bindValue(':id_post', $idPost, PDO::PARAM_INT);
+
+            if ($stmt->execute()) {
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        		$rs = $stmt->fetchAll();
+        		
+        		if ($rs != null) {
+        			$i = 0;
+        			foreach ($rs as $val) {
+        				$hasil[$i]['id'] = $val['id'];
+        				$hasil[$i]['comment'] = $val['comment'];
+						$hasil[$i]['id_user'] = $val['id_user'];
+						$hasil[$i]['id_post'] = $val['id_post'];
+						$hasil[$i]['comment_date'] = $val['comment_date'];
+						$i++;
+        			}
+        		}
+        	}
+        } catch(Exception $e) {
+			echo 'Error select_data : '.$e->getMessage();
+		}
+
+		return $hasil;
+	}
+
+
 	function insert_comment($data) {
 		global $con;
 

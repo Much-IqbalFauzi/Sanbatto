@@ -1,24 +1,27 @@
 <?php
      require_once "functions/user.php";
-    if (!isset($_SESSION['email'])) {
+     require_once "functions/post.php";
+
+     if (!isset($_SESSION['email'])) {
         header("Location: index.php");
     }else{
      $email = isset($_GET['email']) ? $_GET['email'] : "";
      $data = select_user($email);   
-    }
-    // if (isset($_POST['sambat'])) {
-    //     $sambatan['content'] = isset($_POST['content']) ? $_POST['content'] : "";
-    //     $sambatan['id_user'] = isset($data[0]['id'])?$data[0]['id']:"";
-    //     $sambatan['title'] = "";
+    
+     if (isset($_POST['sambat'])) {
+         $sambatan['content'] = isset($_POST['content']) ? $_POST['content'] : "";
+         $sambatan['id_user'] = isset($data[0]['id'])?$data[0]['id']:"";
+         $sambatan['title'] = isset($_POST['title'])?$_POST['title']: "";
 
-    //     if ($sambatan['content'] == "" || $sambatan['id_user']== "") {
-    //         echo '<div class="alert alert-danger">Pastikan semua kolom sudah diisi!'.$sambatan['content'].' '.$sambatan['id_user'].'</div>';
-    //     } else {
-    //             if (insert_post($sambatan)) {echo '<div class="alert alert-success">Sukses tambah post!</div>';
-    //             header("Refresh:1; url=welcome.php?email=$email");}
-    //             else echo '<div class="alert alert-danger">Gagal tambah data user!</div>';
-    //     }
-    // }
+         if ($sambatan['content'] == "" || $sambatan['id_user']== "") {
+             echo '<div class="alert alert-danger">Pastikan semua kolom sudah diisi!'.$sambatan['content'].' '.$sambatan['id_user'].'</div>';
+         } else {
+                 if (insert_post($sambatan)) {echo '<div class="alert alert-success">Sukses tambah post!</div>';
+                 header("Refresh:1; url=welcome.php?email=$email");}
+                 else echo '<div class="alert alert-danger">Gagal tambah data user!</div>';
+         }
+     }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -108,12 +111,16 @@
                 </div>
             </div>
         </form>
-        <ul>
-            <li class="mt-5">
+        <?php
+        $data_table = '';
+        $postingan = select_post();
+        foreach ($postingan as $key => $val) {
+            $data_table .= '
+                <li class="mt-5">
                 <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height shadow postingan">
                     <div class="tutup-posting round-5 flex-center column light">
-                        <h3>Sambatan Dono</h3>
-                        <button class="btn btn-dekati px-4 light-blue">Dekati</button>
+                        <h3>'.$val['title'].'</h3>
+                        <button class="btn btn-dekati px-4 light-blue"><a href="postingan.php?email='.$email.'">Dekati</a></button>
                     </div>
                     <div class="w-100 h-100 flex-center">
                         <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img">
@@ -122,7 +129,15 @@
                     
                 </div>
             </li>
-        </ul>
+            ';
+        }
+
+        echo'
+        
+        <ul>
+            '.$data_table.'
+        </ul>';
+        ?>
     </div>
 
     
