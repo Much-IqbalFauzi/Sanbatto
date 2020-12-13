@@ -1,13 +1,11 @@
 <?php
-    
-
-    // if (!isset($_SESSION['email'])) {
-    //     header("Location: index.php");
-    // }
-    // require_once "functions/user.php";
-    // $email = isset($_GET['email']) ? $_GET['email'] : "";
-    // $data = select_user($email);   
-
+     require_once "functions/user.php";
+    if (!isset($_SESSION['email'])) {
+        header("Location: index.php");
+    }else{
+     $email = isset($_GET['email']) ? $_GET['email'] : "";
+     $data = select_user($email);   
+    }
     // if (isset($_POST['sambat'])) {
     //     $sambatan['content'] = isset($_POST['content']) ? $_POST['content'] : "";
     //     $sambatan['id_user'] = isset($data[0]['id'])?$data[0]['id']:"";
@@ -53,19 +51,23 @@
     </div>
 
     <!-- main -->
+    <?php
+
+    echo '
     <div class="py-3 mt-2">
         <div class="position-fixed ml-5" style="width: 200px">
             <div class="img-replace flex-center round-5 shadow">img replace</div>
             <div class="w-100 p-2 mt-2">
-            <h5>Alisa Illinichina Amiela</h5>
-            <span>22 tahun / Perempuan</span>
+            <h5>'.$data[0]['name'].'</h5>
+            <span>'.$data[0]['birth_date'].' / '.$data[0]['gender'].'</span>
             <div class="flex column w-100">
-                <span>+81-2388-7164-2989</span>
-                <span>Alisa@amiela.com</span>
-                <span><img src="./assets/touch-dark.png" alt="" style="height: 20px; width: 20px;">200 Touches</span>
+                <span>'.$data[0]['phone'].'</span>
+                <span>'.$data[0]['email'].'</span>
+                <span><img src="./assets/touch-dark.png" alt="" style="height: 20px; width: 20px;">'.$data[0]['touch'].' Touches</span>
             </div>
             </div>
         </div>
+        ';?>
         <!-- SIDE -->
         <div class=" position-fixed mr-5" style="width: 200px; right: 0;">
             <div >

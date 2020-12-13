@@ -124,7 +124,7 @@
 				$stmt->bindValue(':touch', 0, PDO::PARAM_INT);
 				$stmt->bindValue(':join_date', date("Y/m/d"), PDO::PARAM_STR);
 				$stmt->bindValue(':life_motto', "", PDO::PARAM_STR);
-				$stmt->bindValue(':verified', $data['verified'], PDO::PARAM_INT);
+				$stmt->bindValue(':verified', "", PDO::PARAM_INT);
 				if ($stmt->execute()) $ok = true;
 				else return false;
 
