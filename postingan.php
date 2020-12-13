@@ -74,10 +74,15 @@
             <hr>
             <div class="p-1">
                 <ul>
+                <?php
+                $online = select_user_online();
+                foreach ($online as $key => $on) {
+                echo'
                     <li class="flex align-center p-2">
                         <div class="user-pict rounded-circle"></div>
-                        <span class="ml-2">Daisuke</span>
-                    </li>
+                        <span class="ml-2">'.$on['name'].'</span>
+                    </li>';
+                 } ?>
                 </ul>
             </div>
         </div>
@@ -90,7 +95,7 @@
             <div class="w-100 flex align-center p-2">
                 <div class="user-pict-lg rounded-circle"></div>
                 <div class="ml-2">
-                    <h5 class="mb-0"><a href="#" class=" dark-blue">'.$userData[0]['name'].'</a></h5>
+                    <h5 class="mb-0"><a href="account.php?email='.$userData[0]['email'].'" class=" dark-blue">'.$userData[0]['name'].'</a></h5>
                     <span class="light-blue-super">'.$postData[0]['post_date'].'</span>
                 </div>
             </div>
