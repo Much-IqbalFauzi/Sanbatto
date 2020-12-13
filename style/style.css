@@ -41,6 +41,18 @@ li {
     color: #f5eee6;
 }
 
+.bg-light-smoth {
+    background-color: #f5eee6;
+}
+
+.bg-light-grad {
+    background-image: linear-gradient(to bottom, #f5eee6, #f5eee6,#f5eee6, #f5eee600);
+}
+
+.bg-light-grad-top {
+    background-image: linear-gradient(to bottom, #f5eee600, #f5eee6);
+}
+
 .bg-light-blue {
     background-color: #23baea;
 }
@@ -154,6 +166,20 @@ li {
     border-radius: 40%;
     background: #1d1d25a1;
     animation: liquid 20s linear infinite;
+}
+
+.profile-border {
+    border-bottom: 1px solid #f5eee6;
+}
+
+#nav-right {
+    background-image: linear-gradient(to bottom, #f5eee6, #f5eee600);
+}
+
+#profile-save {
+    visibility: hidden;
+    opacity: 0;
+    transition: .2s ease;
 }
 
 @keyframes liquid {

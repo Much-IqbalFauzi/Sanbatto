@@ -15,6 +15,10 @@
     width: 45%;
 }
 
+.r-0 {
+    right: 0;
+}
+
 .flex {
     display: flex;
 }
@@ -27,6 +31,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.flex-end-pos {
+    justify-content: flex-end;
 }
 
 .space-around {
@@ -107,6 +115,10 @@
     opacity: 1;
 }
 
+#nav {
+    z-index: 2999;
+}
+
 .hide {
     opacity: 0;
     visibility: hidden;
@@ -151,3 +163,18 @@
 #post-img{
     max-height: 100%;
 }
+
+#foto-profile {
+    height: 300px;
+    justify-content: center;
+}
+
+#foto-profile img {
+    height: 100%;
+    width: auto;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+
+
