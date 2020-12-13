@@ -33,10 +33,11 @@
             <div class="flex align-center space-between" style="font-size: 25px; width: 200px;">
                 <!-- <a href="welcome.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf015;</i></a>
                 <a href="profile.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf007;</i></a> -->
-                <a href=""><i class="fa light cursor-point">&#xf015;</i></a>
-                <a href=""><i class="fa light cursor-point">&#xf007;</i></a>
-                <a href=""><i class="fa light cursor-point">&#xf129;</i></a>
+                <?php echo '<a href="welcome.php?email='.$email.'"><i class="fa light cursor-point">&#xf015;</i></a>
+                <a href="account.php?email='.$email.'"><i class="fa light cursor-point">&#xf007;</i></a>
+                <a href="logout.php"><i class="fa light cursor-point">&#xf129;</i></a>
                 <a href="logout.php"><i class="fa dark-blue cursor-point">	&#xf08b;</i></a>
+                ';?>
                 <!-- <i class="fa"></i> -->
             </div>
         </div>  

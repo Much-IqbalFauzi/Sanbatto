@@ -1,5 +1,11 @@
 <?php
+    require_once "functions/user.php";
 
+    if (!isset($_SESSION['email'])) {
+        header("Location: index.php");
+    } else {
+        $email = isset($_GET['email']) ? $_GET['email'] : "";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -27,10 +33,13 @@
             <div class="flex align-center space-between" style="font-size: 25px; width: 200px;">
                 <!-- <a href="welcome.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf015;</i></a>
                 <a href="profile.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf007;</i></a> -->
-                <a href=""><i class="fa dark-blue cursor-point">&#xf015;</i></a>
-                <a href=""><i class="fa dark-blue cursor-point">&#xf007;</i></a>
+                <?php
+                echo'
+                <a href="welcome.php?email='.$email.'"><i class="fa dark-blue cursor-point">&#xf015;</i></a>
+                <a href="account.php?email='.$email.'"><i class="fa dark-blue cursor-point">&#xf007;</i></a>
                 <a href="logout.php"><i class="fa dark-blue cursor-point">&#xf129;</i></a>
-                <!-- <i class="fa"></i> -->
+                ';
+                ?><!-- <i class="fa"></i> -->
             </div>
         </div>  
     </div>
@@ -40,15 +49,7 @@
 
     <!-- main -->
     <?php
-    require_once "functions/user.php";
-
-    if (!isset($_SESSION['email'])) {
-        header("Location: index.php");
-    } else {
-        $email = isset($_GET['email']) ? $_GET['email'] : "";
-        $data_table = '';
-    
-       
+        $data_table = '';       
         if ($email != "") {
            if (isset($_POST['ganti'])) {
                $new_data['name'] = isset($_POST['name']) ? $_POST['name'] : "";
@@ -112,14 +113,13 @@
                         <option value="Perempuan">Perempuan</option>
                     </select>
                     <h6>Nomor Telepon</h6>
-                    <input onkeypress="showSaveBtn()" type="text" name="name" value="'.$data[0]['phone'].'" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
+                    <input onkeypress="showSaveBtn()" type="text" name="phone" value="'.$data[0]['phone'].'" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
                     <input onkeypress="showSaveBtn()" type="submit" class="mt-4 btn bg-light-blue dark-blue ml-4" name="ganti" value="Simpan" id="profile-save">
                 </div>
             </div>
         </form>
         ';
     }
-  }
   ?>
     </div>
     <div class="w-100" style="z-index: 1">
