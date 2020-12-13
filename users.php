@@ -22,6 +22,7 @@
         <div class="w-100 mx-auto flex align-center space-between">
             <img src="./assets/light.png" alt="" id="main-page" class="">
         </div>  
+        
     </div>
     <div class="bg-light-smoth w-50 position-fixed py-3 px-5" id="nav-right" style="right: 0;">
         <div class="w-100 mx-auto flex align-center flex-end-pos">
