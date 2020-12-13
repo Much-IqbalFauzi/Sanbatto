@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="./style/layout.css">
     <link rel="stylesheet" href="./style/style.css">
-    <title>Welcome | Popular Site for Sambat</title>
+    <title>Sambatan ... | SANBATTO | Popular Site for Sambat</title>
 </head>
 <body>
     <!-- navigation -->
@@ -25,7 +25,8 @@
                 <a href="profile.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf007;</i></a> -->
                 <a href=""><i class="fa light cursor-point">&#xf015;</i></a>
                 <a href=""><i class="fa light cursor-point">&#xf007;</i></a>
-                <a href="logout.php"><i class="fa light cursor-point">&#xf129;</i></a>
+                <a href=""><i class="fa light cursor-point">&#xf129;</i></a>
+                <a href="logout.php"><i class="fa dark-blue cursor-point">	&#xf08b;</i></a>
                 <!-- <i class="fa"></i> -->
             </div>
         </div>  

@@ -173,6 +173,7 @@ li {
 }
 
 #nav-right {
+    z-index: 3999;
     background-image: linear-gradient(to bottom, #f5eee6, #f5eee600);
 }
 

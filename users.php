@@ -54,22 +54,16 @@
             <div class="w-100 p-2 flex">
                 <div class="w-50">
                     <h6>Nama</h6>
-                    <input onkeypress="showSaveBtn()" type="text" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
+                    <input name="nama" readonly type="text" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
                     <h6>Email</h6>
-                    <input onkeypress="showSaveBtn()" type="text" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
-                    <h6>Tanggal Lahir</h6>
-                    <input onkeypress="showSaveBtn()" type="date" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
+                    <input name="email" readonly type="text" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
+                    
                 </div>
                 <div class="w-50">
                     <h6>Jenis Kelamin</h6>
-                    <select onchange="showSaveBtn()" name="jekel" id="" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
-                        <option value="none">Tidak diketahui</option>
-                        <option value="Laki-laki">Laki-laki</option>
-                        <option value="Perempuan">Perempuan</option>
-                    </select>
-                    <h6>Nomor Telepon</h6>
-                    <input onkeypress="showSaveBtn()" type="text" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
-                    <input onkeypress="showSaveBtn()" type="submit" class="mt-4 btn bg-light-blue dark-blue ml-4" name="sambat" value="Simpan" id="profile-save">
+                    <input name="jekel" readonly type="text" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
+                    <h6>Tanggal Lahir</h6>
+                    <input name="tanggalLahir" readonly type="date" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
                 </div>
             </div>
         </form>
