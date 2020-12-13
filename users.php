@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="./style/layout.css">
     <link rel="stylesheet" href="./style/style.css">
-    <title>Welcome | Popular Site for Sambat</title>
+    <title>Hello ... | Popular Site for Sambat</title>
 </head>
 <body>
     <!-- navigation -->
@@ -31,7 +31,8 @@
                 <a href="profile.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf007;</i></a> -->
                 <a href=""><i class="fa dark-blue cursor-point">&#xf015;</i></a>
                 <a href=""><i class="fa dark-blue cursor-point">&#xf007;</i></a>
-                <a href="logout.php"><i class="fa dark-blue cursor-point">&#xf129;</i></a>
+                <a href=""><i class="fa dark-blue cursor-point">&#xf129;</i></a>
+                <a href="logout.php"><i class="fa dark-blue cursor-point">	&#xf08b;</i></a>
                 <!-- <i class="fa"></i> -->
             </div>
         </div>  
@@ -56,14 +57,13 @@
                     <input name="nama" readonly type="text" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
                     <h6>Email</h6>
                     <input name="email" readonly type="text" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
-                    <h6>Tanggal Lahir</h6>
-                    <input name="tanggalLahir" readonly type="date" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
+                    
                 </div>
                 <div class="w-50">
                     <h6>Jenis Kelamin</h6>
                     <input name="jekel" readonly type="text" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
-                    <h6>Nomor Telepon</h6>
-                    <input name="noTelp" readonly type="text" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
+                    <h6>Tanggal Lahir</h6>
+                    <input name="tanggalLahir" readonly type="date" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
                 </div>
             </div>
         </form>
