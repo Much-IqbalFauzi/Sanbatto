@@ -120,7 +120,7 @@
                 <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height shadow postingan">
                     <div class="tutup-posting round-5 flex-center column light">
                         <h3>'.$val['title'].'</h3>
-                        <button class="btn btn-dekati px-4 light-blue"><a href="postingan.php?email='.$email.'">Dekati</a></button>
+                        <button class="btn btn-dekati px-4 light-blue"><a href="postingan.php?email='.$email.'&id_post='.$val['id'].'">Dekati</a></button>
                     </div>
                     <div class="w-100 h-100 flex-center">
                         <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img">

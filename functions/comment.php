@@ -42,7 +42,7 @@
 		$hasil = array();
 
 		if ($idPost != 0) $sql = "SELECT * FROM tb_comment WHERE id_post = :id_post";
-		else $sql = "SELECT * FROM tb_comment";
+		else echo "no comment";
 
 		try {
             $stmt = $con->prepare($sql);

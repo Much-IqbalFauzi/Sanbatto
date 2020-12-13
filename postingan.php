@@ -7,7 +7,7 @@
         header("Location: index.php");
     } else {
         $email = isset($_GET['email']) ? $_GET['email'] : "";
-        $idPost = isset($_GET['idPost'])?$_GET['idPost']:"";
+        $idPost = isset($_GET['id_post'])?$_GET['id_post']:"";
     }
    
 ?>
@@ -100,7 +100,7 @@
             <hr>
             <ul>
             <?php
-            $komentar = select_comment_post("26");
+            $komentar = select_comment_post($idPost);
             foreach ($komentar as $key => $val) {
             echo'
                 <li>
