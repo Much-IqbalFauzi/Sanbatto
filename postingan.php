@@ -8,6 +8,26 @@
     } else {
         $email = isset($_GET['email']) ? $_GET['email'] : "";
         $idPost = isset($_GET['id_post'])?$_GET['id_post']:"";
+        $komentator = select_user($email);
+        $postData = select_post_id($idPost);
+        $userData = select_user_id($postData[0]['id_user']);
+
+        if (isset($_POST['komentar'])) {
+            $komentar['comment'] = isset($_POST['comment'])?$_POST['comment']:"";
+            $komentar['id_user'] = $komentator[0]['id'];
+            $komentar['id_post'] = $idPost;
+
+            if($komentar['comment']==""){
+                echo '<div class="alert alert-danger">Pastikan semua kolom sudah diisi!'.$komentar['comment'].'</div>';
+            }else{
+                if (insert_comment($komentar)) {
+                    echo '<div class="alert alert-success">Sukses tambah post!</div>';
+                    header("Refresh:1; url=postingan.php?email=$email&id_post=$idPost");}
+                    else echo '<div class="alert alert-danger">Gagal tambah data user!'.$komentator[0]['id'].'</div>';
+            
+            }
+
+        }
     }
    
 ?>
@@ -63,8 +83,7 @@
         </div>
         <!-- POSTING  -->
         <?php
-        $postData = select_post_id($idPost);
-        $userData = select_user_id($postData[0]['id_user']);
+        
         if(sizeof($postData)>0){
         echo'
         <div class="overflow-hidden mx-auto input-post round-5 p-3 shadow">
@@ -90,10 +109,11 @@
         }
             
         ?>
-            <form action="">
+            <form action="" method="post">
                 <div class="w-100 mt-2 flex align-center px-2">
                     <div class="user-pict rounded-circle"></div>
-                    <input type="text" class="ml-2 pl-4 p-2 round-5 shadow-sm w-100 float-right" placeholder="Yok..Tenangkan!">
+                    <input type="text" name="comment" class="ml-2 pl-4 p-2 round-5 shadow-sm w-100 float-right" placeholder="Yok..Tenangkan!">
+                    <input type="submit" name="komentar">
                 </div>
             </form>
             <hr>

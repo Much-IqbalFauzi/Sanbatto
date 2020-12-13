@@ -42,7 +42,7 @@
 		$hasil = array();
 
 		if ($idPost != 0) $sql = "SELECT * FROM tb_comment WHERE id_post = :id_post";
-		else echo "no comment";
+		else  $sql = "SELECT * FROM tb_comment WHERE id_post = :id_post";
 
 		try {
             $stmt = $con->prepare($sql);
@@ -77,12 +77,12 @@
 
 		if ($data != null) {
 			try {
-				$sql = "INSERT INTO tb_comment VALUES (:comment, :id_user, :id_post, :id_user, :comment_date)";
+				$sql = "INSERT INTO tb_comment VALUES (0,:comment, :id_user, :id_post, :comment_date)";
 				$stmt = $con->prepare($sql);
 				$stmt->bindValue(':comment', $data['comment'], PDO::PARAM_STR);
 				$stmt->bindValue(':id_user', $data['id_user'], PDO::PARAM_INT);
 				$stmt->bindValue(':id_post', $data['id_post'], PDO::PARAM_INT);
-				$stmt->bindValue(':comment_date', $data['comment_date'], PDO::PARAM_STR);
+				$stmt->bindValue(':comment_date', date("Y/m/d"), PDO::PARAM_STR);
 				if ($stmt->execute()) return true;
 				else return false;
 			} catch(Exception $e) {
