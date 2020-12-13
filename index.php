@@ -9,6 +9,7 @@
             $email = $_POST['email'];
             $password = $_POST['password']; 
             if($email=="admin" & $password=="admin"){
+                $_SESSION['email'] = $email;
                 header("Refresh:1; url=admin.php");
             }else{
             if(check_login($email,$password)){

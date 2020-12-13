@@ -61,7 +61,7 @@
                $new_data['touch'] = isset($_POST['touch']) ? $_POST['touch'] : "";
                $new_data['join_date'] = isset($_POST['join_date']) ? $_POST['join_date'] : "";
                $new_data['verified'] = isset($_POST['verified']) ? $_POST['verified'] : "";
-    
+                $new_data['file_source'] = isset($_POST['file_source'])?$_POST['file_source']:"";
                if ($new_data['name'] == "" || $new_data['birth_date'] == "" ||$new_data['gender'] == "" ||  
                $new_data['phone'] == "") {
                    echo '<div class="alert alert-danger">Pastikan semua kolom sudah diisi!</div>';
@@ -119,60 +119,37 @@
             </div>
         </form>
         ';
+    
+    require_once "functions/post.php";
+    $post_account = select_post($data[0]['id']);
+    $data_post="";
+    foreach ($post_account as $key => $val) {
+        $data_post ='
+        <li class="mt-5">
+                    <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height shadow postingan">
+                        <div class="tutup-posting round-5 flex-center column light">
+                            <h3>Sambatan '.$data[0]['name'].'</h3>
+                            <h4>'.$val['title'].'</h4>
+                            <button class="btn btn-dekati px-4 light-blue"><a href="postingan.php?email='.$email.'&id_post='.$val['id'].'">Dekati</a></button>
+                        </div>
+                        <div class="w-100 h-100 flex-center">
+                            <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img">
+                            <video src="" id="post-video" hidden></video>
+                        </div>
+                    </div>
+                </li>
+        ';
+    }
+    
     }
   ?>
     </div>
     <div class="w-100" style="z-index: 1">
         <div class="w-50 mt-5 overflow-scroll float-right">
             <ul class="mt-5">
-                <li class="mt-5">
-                    <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height shadow postingan">
-                        <div class="tutup-posting round-5 flex-center column light">
-                            <h3>Sambatan Dono</h3>
-                            <button class="btn btn-dekati px-4 light-blue">Dekati</button>
-                        </div>
-                        <div class="w-100 h-100 flex-center">
-                            <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img">
-                            <video src="" id="post-video" hidden></video>
-                        </div>
-                    </div>
-                </li>
-                <li class="mt-5">
-                    <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height shadow postingan">
-                        <div class="tutup-posting round-5 flex-center column light">
-                            <h3>Sambatan Dono</h3>
-                            <button class="btn btn-dekati px-4 light-blue">Dekati</button>
-                        </div>
-                        <div class="w-100 h-100 flex-center">
-                            <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img">
-                            <video src="" id="post-video" hidden></video>
-                        </div>
-                    </div>
-                </li>
-                <li class="mt-5">
-                    <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height shadow postingan">
-                        <div class="tutup-posting round-5 flex-center column light">
-                            <h3>Sambatan Dono</h3>
-                            <button class="btn btn-dekati px-4 light-blue">Dekati</button>
-                        </div>
-                        <div class="w-100 h-100 flex-center">
-                            <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img">
-                            <video src="" id="post-video" hidden></video>
-                        </div>
-                    </div>
-                </li>
-                <li class="mt-5">
-                    <div class="overflow-hidden mx-auto input-post round-5 p-3 main-post-height shadow postingan">
-                        <div class="tutup-posting round-5 flex-center column light">
-                            <h3>Sambatan Dono</h3>
-                            <button class="btn btn-dekati px-4 light-blue">Dekati</button>
-                        </div>
-                        <div class="w-100 h-100 flex-center">
-                            <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img">
-                            <video src="" id="post-video" hidden></video>
-                        </div>
-                    </div>
-                </li>
+               <?php
+                    echo $data_post;
+               ?>
             </ul>
         </div>
 

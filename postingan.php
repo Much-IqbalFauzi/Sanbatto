@@ -63,8 +63,7 @@
         </div>
         <!-- POSTING  -->
         <?php
-
-        $postData = select_post($idPost);
+        $postData = select_post_id($idPost);
         $userData = select_user_id($postData[0]['id_user']);
         if(sizeof($postData)>0){
         echo'
@@ -80,7 +79,7 @@
                 <p>'.$postData[0]['content'].'</p>
             </div>
             <div class="w-100 h-100 flex-center mt-2">
-                <img src="./assets/sample.jpg" alt="" class="rounded" id="post-img-profile" width="100%" height="auto">
+                <img src="./'.$postData[0]['file_source'].'" alt="" class="rounded" id="post-img-profile" width="100%" height="auto">
                 <video src="" id="post-video" hidden></video>
             </div>
             <div class="w-100 mt-2 px-2">
