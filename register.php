@@ -65,7 +65,7 @@
                 </div>
             </form>
             <div>
-                <p>Punya akun? <a class="cursor-point light-green"><u>Login</u></a></p>
+                <p>Punya akun? <a href="index.php" class="cursor-point light-green"><u>Login</u></a></p>
             </div>
         </div>
         <div class="w-50 h-75 flex-center p-3 column box">

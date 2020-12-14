@@ -75,7 +75,7 @@
         <!-- SIDE -->
         <div class=" position-fixed mr-5" style="width: 200px; right: 0;">
             <div>
-                <input type="text" placeholder="cari user online" name="" id="" class="w-100 pl-4 p-2 round-5 border-sm">
+                <input type="text" placeholder="cari user online" name="" id="userSearch" class="w-100 pl-4 p-2 round-5 border-sm">
                 <i class="fa" id="search-user-online">&#xf002;</i>
             </div>
             <hr>
@@ -85,7 +85,7 @@
                 $online = select_user_online();
                 foreach ($online as $key => $on) {
                 echo'
-                    <li class="flex align-center p-2">
+                    <li class="flex align-center p-2 userItems" id="UserBlock">
                         <div class="user-pict rounded-circle"></div>
                         <span class="ml-2">'.$on['name'].'</span>
                     </li>';
@@ -120,8 +120,8 @@
                 <video src="" id="post-video" hidden></video>
             </div>
             <div class="w-100 mt-2 px-2">
-                <a href="postingan.php?email='.$email.'&id_post='.$idPost.'&appreciate=true"><i class="fa cursor-point appreciate">&#xf087;</a><h6>'.$postData[0]['appreciate'].'</h6></i>
-                <a href="postingan.php?email='.$email.'&id_post='.$idPost.'&not=true"><i class="fa cursor-point not-interest">&#xf165;</a><h6>'.$postData[0]['uninterest'].'</h6></i>
+                <a href="postingan.php?email='.$email.'&id_post='.$idPost.'&appreciate=true"><i class="fa cursor-point mx-2 appreciate">&#xf087;</a><span>'.$postData[0]['appreciate'].'</span></i>
+                <a href="postingan.php?email='.$email.'&id_post='.$idPost.'&not=true"><i class="fa cursor-point mx-2 not-interest">&#xf165;</a><span>'.$postData[0]['uninterest'].'</span></i>
             </div>
             <hr>
             ';
@@ -161,6 +161,6 @@
     
     <!-- <script src="./script/main.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <!-- <script src="./script/main.js"></script> -->
+    <script src="./script/add.js"></script>
 </body>
 </html>

@@ -21,4 +21,7 @@ document.getElementById("inputPhoto").addEventListener('change', function() {
         }
         readSource.readAsDataURL(file);
     }
+    showSaveBtn();
 }); 
+
+

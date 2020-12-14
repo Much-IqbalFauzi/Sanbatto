@@ -111,7 +111,7 @@
         <!-- SIDE -->
         <div class=" position-fixed mr-5" style="width: 200px; right: 0;">
             <div >
-                <input type="text" placeholder="cari user online" name="" id="" class="w-100 pl-4 p-2 round-5 shadow-sm">
+                <input type="text" placeholder="cari user" name="" onkeyup="search_User()" id="userSearch" class="w-100 pl-4 p-2 round-5 shadow-sm">
                 <i class="fa" id="search-user-online">&#xf002;</i>
             </div>
             <hr>
@@ -128,10 +128,9 @@
                 $online = select_user_online();
                 foreach ($online as $key => $on) {
                 echo'
-                    <li class="flex align-center p-2">
-                        <div class="user-pict rounded-circle"></div>
-                        <a href="'.$path.'?email='.$on['email'].'" class=" ml-2">'.$on['name'].'</a>
-
+                    <li class="flex align-center p-2 userItems">
+                        <div class="position-absolute user-pict rounded-circle" id="UserBlock"></div>
+                        <a href="'.$path.'?email='.$on['email'].'" class=" ml-4 pl-2">'.$on['name'].'</a>
                     </li>';
                  } ?>
                 </ul>

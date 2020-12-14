@@ -114,22 +114,22 @@
     $data = select_user($email);
     if(sizeof($data) > 0){
         echo '
-   <form  method="post" action="account.php?email='.$data[0]['email'].'" enctype="multipart/form-data">
-    <div class="w-50 h-100 position-fixed flex p-3 mt-2 column light bg-dark-blue overflow-scroll">
-        <div class="w-50 mx-auto mt-5 overflow-hidden flex" id="foto-profile">
-        <div class="w-100 bg-dark-blue flex-center" id="profile-photo">
-                <label>
-                    <i class="fa cursor-point light">&#xf030;</i>
-                    <input type="file" id="inputPhoto" name="img-profile" style="display: none"/>
-                </label>
-        </div>
-        <img src="'.$data[0]['file_source'].'" alt="" id="img-profile">
-        </div>
-        <div class="w-100 light my-2 text-center">
-            <input type="text" name="life_motto" value="'.$data[0]['life_motto'].'">
-            <h5><img class="cursor-point" onclick="touching()" src="./assets/touch-light.png" alt="" style="height: 25px; width: 25px;">'.$data[0]['touch'].' Toucher</h5>
-        </div>
-        <hr>
+    <form  method="post" action="account.php?email='.$data[0]['email'].'" enctype="multipart/form-data">
+        <div class="w-50 h-100 position-fixed flex p-3 mt-2 column light bg-dark-blue overflow-scroll">
+            <div class="w-50 mx-auto mt-5 overflow-hidden flex" id="foto-profile">
+                <div class="w-100 bg-dark-blue flex-center" id="profile-photo">
+                        <label>
+                            <i class="fa cursor-point light">&#xf030;</i>
+                            <input type="file" id="inputPhoto" name="img-profile" style="display: none"/>
+                        </label>
+                </div>
+                <img src="'.$data[0]['file_source'].'" alt="" id="img-profile">
+            </div>
+            <div class="w-100 light my-2 text-center">
+                <input class="text-center w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5" type="text" name="life_motto" value="'.$data[0]['life_motto'].'">
+                <h5><img class="cursor-point" onclick="touching()" src="./assets/touch-light.png" alt="" style="height: 25px; width: 25px;">'.$data[0]['touch'].' Toucher</h5>
+            </div>
+            <hr>
         
             <div class="w-100 p-2 flex">
                 <div class="w-50">
