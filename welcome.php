@@ -7,7 +7,9 @@
     }else{
      $email = isset($_GET['email']) ? $_GET['email'] : "";
      $data = select_user($email);   
-    
+
+     online($email);
+
      if (isset($_POST['sambat'])) {
          $sambatan['content'] = isset($_POST['content']) ? $_POST['content'] : "";
          $sambatan['id_user'] = isset($data[0]['id'])?$data[0]['id']:"";
@@ -94,7 +96,7 @@
     echo '
     <div class="py-3 mt-2">
         <div class="position-fixed ml-5" style="width: 200px">
-            <div class="img-replace flex-center round-5 shadow">img replace</div>
+            <div class="img-replace flex-center round-5 shadow overflow-hidden"><img src="'.$data[0]['file_source'].'" height="100%" width="auto"></div>
             <div class="w-100 p-2 mt-2">
             <h5>'.$data[0]['name'].'</h5>
             <span>'.$data[0]['birth_date'].' / '.$data[0]['gender'].'</span>
@@ -116,12 +118,20 @@
             <div class="p-1">
                 <ul>
                 <?php
+                $path = "";
+                if($email==$data[0]['email']){
+                    $path="account.php";
+                }else{
+                    $path="users.php";
+                }
+
                 $online = select_user_online();
                 foreach ($online as $key => $on) {
                 echo'
                     <li class="flex align-center p-2">
                         <div class="user-pict rounded-circle"></div>
-                        <span class="ml-2">'.$on['name'].'</span>
+                        <a href="'.$path.'?email='.$on['email'].'" class=" ml-2">'.$on['name'].'</a>
+
                     </li>';
                  } ?>
                 </ul>

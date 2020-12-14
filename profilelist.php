@@ -11,6 +11,20 @@
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
+<div class="bg-dark-blue w-100 sticky-top py-3 px-5" id="nav">
+        <div class="w-100 mx-auto flex align-center space-between">
+            <img src="./assets/light.png" alt="" id="main-page" class="ml-">
+            <div class="flex align-center space-between" style="font-size: 25px; width: 200px;">
+                <!-- <a href="welcome.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf015;</i></a>
+                <a href="profile.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf007;</i></a> -->
+                <?php echo '
+                <a href=""><i class="fa light cursor-point">&#xf129;</i></a>
+                <a href="logout.php"><i class="fa light cursor-point">	&#xf08b;</i></a>
+                ';?>
+                <!-- <i class="fa"></i> -->
+            </div>
+        </div>  
+    </div>
 <h2>Profile List</h2>
 <?php
 		require_once "functions/user.php";

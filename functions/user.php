@@ -255,6 +255,44 @@
 		}
 	}
 
+	function online($email="") {
+		global $con;
+
+		if ($email != null) {
+			try {
+				$sql = "UPDATE tbl_user SET status = 1 WHERE email = :email";
+				$stmt = $con->prepare($sql);
+				$stmt->bindValue(':email', $email, PDO::PARAM_STR);
+				if ($stmt->execute()) return true;
+				else return false;
+			} catch(Exception $e) {
+				echo 'Error update_data : '.$e->getMessage();
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	function offline($email="") {
+		global $con;
+
+		if ($email != null) {
+			try {
+				$sql = "UPDATE tbl_user SET status = 0 WHERE email = :email";
+				$stmt = $con->prepare($sql);
+				$stmt->bindValue(':email', $email, PDO::PARAM_STR);
+				if ($stmt->execute()) return true;
+				else return false;
+			} catch(Exception $e) {
+				echo 'Error update_data : '.$e->getMessage();
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
 	function delete_user($id="") {
 		global $con;
 

@@ -50,6 +50,7 @@
 
     <!-- main -->
     <?php
+    $fileDestination="";
         if(isset($_FILES['img-profile'])){
             echo "ini di set";
             $file = $_FILES['img-profile'];
@@ -95,7 +96,7 @@
                $new_data['verified'] = isset($_POST['verified']) ? $_POST['verified'] : "";
                $new_data['file_source'] = $fileDestination?$fileDestination:"";
                if ($new_data['name'] == "" || $new_data['birth_date'] == "" ||$new_data['gender'] == "" ||  
-               $new_data['phone'] == "") {
+               $new_data['phone'] == "" || $new_data['life_motto']=="") {
                    echo '<div class="alert alert-danger">Pastikan semua kolom sudah diisi!</div>';
                } else {
                    $data = select_user($email);
@@ -108,7 +109,7 @@
                }
            }
         }
-
+    
 
     $data = select_user($email);
     if(sizeof($data) > 0){
@@ -125,15 +126,14 @@
         <img src="'.$data[0]['file_source'].'" alt="" id="img-profile">
         </div>
         <div class="w-100 light my-2 text-center">
-            <h4>Motto Gann</h4>
-            <h5><img class="cursor-point" src="./assets/touch-light.png" alt="" style="height: 25px; width: 25px;"> '.$data[0]['touch'].' Toucher</h5>
+            <input type="text" name="life_motto" value="'.$data[0]['life_motto'].'">
+            <h5><img class="cursor-point" onclick="touching()" src="./assets/touch-light.png" alt="" style="height: 25px; width: 25px;">'.$data[0]['touch'].' Toucher</h5>
         </div>
         <hr>
         
             <div class="w-100 p-2 flex">
                 <div class="w-50">
                 <input onkeypress="showSaveBtn()" type="hidden" name="status" value="'.$data[0]['status'].'" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
-                <input onkeypress="showSaveBtn()" type="hidden" name="life_motto" value="'.$data[0]['life_motto'].'" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
                 <input onkeypress="showSaveBtn()" type="hidden" name="touch" value="'.$data[0]['touch'].'" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
                 <input onkeypress="showSaveBtn()" type="hidden" name="join_date" value="'.$data[0]['join_date'].'" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
                 <input onkeypress="showSaveBtn()" type="hidden" name="verified" value="'.$data[0]['verified'].'" class="w-75 light bg-dark-blue py-1 mb-2 px-3 profile-border round-5">
@@ -194,8 +194,8 @@
         </div>
 
     </div>
-        
-
+    
+    
     
     <!-- <script src="./script/main.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

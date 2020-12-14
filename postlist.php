@@ -11,7 +11,22 @@
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-<h2>Post List</h2>
+<div class="bg-dark-blue w-100 sticky-top py-3 px-5" id="nav">
+        <div class="w-100 mx-auto flex align-center space-between">
+            <img src="./assets/light.png" alt="" id="main-page" class="ml-">
+            <div class="flex align-center space-between" style="font-size: 25px; width: 200px;">
+                <!-- <a href="welcome.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf015;</i></a>
+                <a href="profile.php?email=<?php //echo $data[0]['email'] ?> "><i class="fa cursor-point">&#xf007;</i></a> -->
+                <?php echo '
+				<a href=""><i class="fa light cursor-point">&#xf129;</i></a>
+                <a href="logout.php"><i class="fa light cursor-point">	&#xf08b;</i></a>
+                ';?>
+                <!-- <i class="fa"></i> -->
+            </div>
+        </div>  
+    </div>
+
+<h2 style="margin:2vh">Post List</h2>
 <?php
 		require_once "functions/post.php";
 
@@ -56,8 +71,8 @@
 			}
 
 			echo '
-				<table class="table table-bordered table-hover">
-					<tr class="table-success">
+				<table style="margin:3vh" class="table table-border ">
+					<tr>
 						<th nowrap><center>Id</center></th>
 						<th nowrap>Judul</th>
                         <th nowrap><center>Konten</center></th>
@@ -66,7 +81,8 @@
                         <th nowrap><center>Appreciate</center></th>
                         <th nowrap><center>Uninterest</center></th>
                         <th nowrap><center>Report</center></th>
-                        <th nowrap><center>Status</center></th>
+						<th nowrap><center>Status</center></th>
+						<th nowrap><center>Action</center></th>
                     </tr>
 					'.$data_table.'
 				</table>

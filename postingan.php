@@ -28,6 +28,13 @@
             }
 
         }
+
+        if(isset($_GET['appreciate'])){
+            appreciating($idPost);
+        }else if(isset($_GET['not'])){
+            uninteresting($idPost);
+        }
+
     }
    
 ?>
@@ -88,14 +95,20 @@
         </div>
         <!-- POSTING  -->
         <?php
-        
+        $path = "";
+        if($email==$userData[0]['email']){
+            $path="account.php";
+        }else{
+            $path="users.php";
+        }
+
         if(sizeof($postData)>0){
         echo'
         <div class="overflow-hidden mx-auto input-post round-5 p-3 shadow">
             <div class="w-100 flex align-center p-2">
                 <div class="user-pict-lg rounded-circle"></div>
                 <div class="ml-2">
-                    <h5 class="mb-0"><a href="account.php?email='.$userData[0]['email'].'" class=" dark-blue">'.$userData[0]['name'].'</a></h5>
+                    <h5 class="mb-0"><a href="'.$path.'?email='.$userData[0]['email'].'" class=" dark-blue">'.$userData[0]['name'].'</a></h5>
                     <span class="light-blue-super">'.$postData[0]['post_date'].'</span>
                 </div>
             </div>
@@ -107,8 +120,8 @@
                 <video src="" id="post-video" hidden></video>
             </div>
             <div class="w-100 mt-2 px-2">
-                <i class="fa cursor-point appreciate">&#xf087;</i>
-                <i class="fa cursor-point not-interest">&#xf165;</i>
+                <a href="postingan.php?email='.$email.'&id_post='.$idPost.'&appreciate=true"><i class="fa cursor-point appreciate">&#xf087;</a><h6>'.$postData[0]['appreciate'].'</h6></i>
+                <a href="postingan.php?email='.$email.'&id_post='.$idPost.'&not=true"><i class="fa cursor-point not-interest">&#xf165;</a><h6>'.$postData[0]['uninterest'].'</h6></i>
             </div>
             <hr>
             ';

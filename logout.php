@@ -1,5 +1,12 @@
 <?php
-session_start();
+require_once "functions/user.php";
+if (!isset($_SESSION['email'])) {
+    header("Location: index.php");
+}else{
+ $email = $_SESSION['email'];
+ offline($email);
+}
+
 session_destroy();
 // echo
 //  '

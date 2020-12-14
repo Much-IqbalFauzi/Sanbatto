@@ -136,4 +136,46 @@
 			return false;
 		}
 	}
+
+	function appreciating($id_post=0){
+		global $con;
+
+		if ($id_post != null) {
+			try {
+				$dataTemp = select_post_id($id_post);
+				$sql = "UPDATE tb_post SET appreciate = :app WHERE id = :id_post";
+				$stmt = $con->prepare($sql);
+				$stmt->bindValue(':app',$dataTemp[0]['appreciate']+1 , PDO::PARAM_INT);
+				$stmt->bindValue(':id_post', $id_post, PDO::PARAM_INT);
+				if ($stmt->execute()) return true;
+				else return false;
+			} catch(Exception $e) {
+				echo 'Error update_data : '.$e->getMessage();
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	function uninteresting($id_post=0){
+		global $con;
+
+		if ($id_post != null) {
+			try {
+				$dataTemp = select_post_id($id_post);
+				$sql = "UPDATE tb_post SET uninterest = :app WHERE id = :id_post";
+				$stmt = $con->prepare($sql);
+				$stmt->bindValue(':app',$dataTemp[0]['uninterest']+1 , PDO::PARAM_INT);
+				$stmt->bindValue(':id_post', $id_post, PDO::PARAM_INT);
+				if ($stmt->execute()) return true;
+				else return false;
+			} catch(Exception $e) {
+				echo 'Error update_data : '.$e->getMessage();
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
 ?>
